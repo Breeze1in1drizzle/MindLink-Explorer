@@ -7,3 +7,5 @@ To inspire the market potential of MindLink, we will not noly update this reposi
 Hopefully we can finish this project to make emotions cauculating much easier.
 
 Welcome to join us to explore the MindLink! Thank you.
+
+![MindLink Logo Here](https://github.com/Breeze1in1drizzle/MindLink/blob/master/MindLink_logo.jpg)
