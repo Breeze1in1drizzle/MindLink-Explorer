@@ -4,6 +4,6 @@ MindLink is an open source system which combines EEG and expressions of FACE to 
 
 To inspire the market potential of MindLink, we will not noly update this repository with new codes, but we will also make some files about market research to get konwn of the need of all kinds of consumers.
 
-Hopefully we can fullfil this project to make emotons cauculating much easier.
+Hopefully we can finish this project to make emotions cauculating much easier.
 
 Welcome to join us to explore the MindLink! Thank you.
