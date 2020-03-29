@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">  	
+   		<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+   		<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
+		<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+		<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-json/2.6.0/jquery.json.min.js"></script>
+		<script src="static/js/configuration.js" type="text/javascript"></script>
+		<style>
+			.checkbox-inline{
+				margin-right: 60px;
+				
+			}
+		</style>
+		<script>
+		
+			$().ready(function() {
+			
+			$("#submit_SAM").click(function(e){
+				
+				var valence = $('#valence input:radio:checked').val();
+				var arousal = $('#arousal input:radio:checked').val();
+				if (!valence || !arousal){
+					alert("Please fill the form");
+					return;
+				}
+    			trial_id = $.cookie("trial_id");
+    			var jsonData = $.toJSON({
+    				valence:valence,
+    				arousal:arousal,
+    				trial_id:trial_id
+    			});
+    			 
+    			$.post(server_url+"post_SAM_label", 
+    			 	jsonData,
+    				function(data, status){
+    					if(data == 1){
+    						
+    						trial_id++;
+    						$.cookie('trial_id', trial_id);  
+    						tot_trial_num = $.cookie("tot_trial_num");
+    						
+    						if(trial_id <= tot_trial_num){
+    							window.location.href = "count_down.html";	
+    						}else{
+								// alert("finish.html")
+    							window.location.href = "finish.html";
+    						}
+    						
+    						
+    					}else if(data == 0){
+    						
+    					}
+    				},'json');
+    				
+					
+			});
+			
+			});
+			
+			
+		</script>
+	</head>
+	<body>
+		
+		<form id="valence_form" class="form-horizontal" role="form" style="margin-top: 100px;">
+ 		
+ 		<div class="col-sm-offset-3" style="margin-bottom: 50px;">
+ 			<p class="col-sm-offset-3" style="font-size: 17px">self report in <em style = "font-weight: bold; font-size:22px">Valence</em> space</p>
+ 			<p class="col-sm-offset-1" style="">valence ranges from negative to positive, 1 stands for very negative while 9 stand for very positive</p>
+ 		
+ 			</div>
+ 		
+  		<div class="col-sm-offset-3">
+		   	<img src="static/img/valence.jpg" />
+		</div>
+		
+		<div  id="valence" class="col-sm-offset-3" style="margin-top: 30px; margin-bottom: 50px;">   	
+		   	
+		    <label class="checkbox-inline">
+		       <input type="radio" name="optionsRadiosinline" id="valence_1"
+		       	value="1"> 
+		       	<p>1</p>
+		    </label>
+		    <label class="checkbox-inline">
+		       <input type="radio" name="optionsRadiosinline" id="valence_2"
+		       	value="2"> 
+		       	<p>2</p>
+		    </label>
+		    <label class="checkbox-inline">
+		       <input type="radio" name="optionsRadiosinline" id="valence_3"
+		       	value="3"> 
+		       	 	<p>3</p>
+		    </label>
+		    <label class="checkbox-inline">
+		       <input type="radio" name="optionsRadiosinline" id="valence_4"
+		       	value="4">
+		       	 	<p>4</p>
+		    </label>
+		    <label class="checkbox-inline">
+		       <input type="radio" name="optionsRadiosinline" id="valence_5"
+		       	value="5">
+		       	 	<p>5</p>
+		    </label>
+		    <label class="checkbox-inline">
+		       <input type="radio" name="optionsRadiosinline" id="valence_6"
+		       	value="6">
+		       	 	<p>6</p>
+		    </label>
+		    <label class="checkbox-inline">
+		       <input type="radio" name="optionsRadiosinline" id="valence_7"
+		       	value="7">
+		       	 	<p>7</p>
+		    </label>
+		    <label class="checkbox-inline">
+		       <input type="radio" name="optionsRadiosinline" id="valence_8"
+		       	value="8">
+		       	 	<p>8</p>
+		    </label>
+		    <label class="checkbox-inline">
+		       <input type="radio" name="optionsRadiosinline" id="valence_9"
+		       	value="9">
+		       	 	<p>9</p>
+		    </label>
+		</div>
+		
+		
+	</form>
+	
+	
+	<form id="arousal_form" class="form-horizontal" role="form" style="margin-top: 100px;">
+ 		
+ 		<div class="col-sm-offset-3" style="margin-bottom: 50px;">
+ 			<p class="col-sm-offset-3" style="font-size: 17px">self report in <em style = "font-weight: bold; font-size:22px">Arousal</em> space</p>
+ 			<p class="col-sm-offset-1" style="">arousal ranges from calming to exciting, 1 stands for very clam while 9 stand for very exciting</p>
+ 		</div>
+ 		
+  		<div class="col-sm-offset-3">
+		   	<img src="static/img/arousal.jpg" />
+		</div>
+		
+		<div  id="arousal" class="col-sm-offset-3" style="margin-top: 30px; margin-bottom: 50px;">   	
+		   	
+		    <label class="checkbox-inline">
+		       <input type="radio" name="optionsRadiosinline" id="arousal_1"
+		       	value="1"> 
+		       	 	<p>1</p>
+		    </label>
+		    <label class="checkbox-inline">
+		       <input type="radio" name="optionsRadiosinline" id="arousal_2"
+		       	value="2"> 
+		       	 	<p>2</p>
+		    </label>
+		    <label class="checkbox-inline">
+		       <input type="radio" name="optionsRadiosinline" id="arousal_3"
+		       	value="3"> 
+		       	 	<p>3</p>
+		    </label>
+		    <label class="checkbox-inline">
+		       <input type="radio" name="optionsRadiosinline" id="arousal_4"
+		       	value="4"> 
+		       	 	<p>4</p>
+		    </label>
+		    <label class="checkbox-inline">
+		       <input type="radio" name="optionsRadiosinline" id="arousal_5"
+		       	value="5"> 
+		       	 	<p>5</p>
+		    </label>
+		    <label class="checkbox-inline">
+		       <input type="radio" name="optionsRadiosinline" id="arousal_6"
+		       	value="6"> 
+		       	 	<p>6</p>
+		    </label>
+		    <label class="checkbox-inline">
+		       <input type="radio" name="optionsRadiosinline" id="arousal_7"
+		       	value="7"> 
+		       	 	<p>7</p>
+		    </label>
+		    <label class="checkbox-inline">
+		       <input type="radio" name="optionsRadiosinline" id="arousal_8"
+		       	value="8"> 
+		       	 	<p>8</p>
+		    </label>
+		    <label class="checkbox-inline">
+		       <input type="radio" name="optionsRadiosinline" id="arousal_9"
+		       	value="9">
+		       	 	<p>9</p>
+		    </label>
+		</div>
+
+	</form>
+	
+	 <div class="col-sm-offset-5 col-sm-10">
+		<input type="button" id="submit_SAM" value="Submit" class="btn btn-info" style="width: 200px;"></input>
+	</div>
+	</body>
+</html>

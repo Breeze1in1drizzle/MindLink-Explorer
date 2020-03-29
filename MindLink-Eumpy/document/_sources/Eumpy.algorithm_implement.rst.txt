@@ -1,0 +1,53 @@
+Eumpy.algorithm\_implement package
+==================================
+
+Subpackages
+-----------
+
+.. toctree::
+
+    Eumpy.algorithm_implement.train_baseline_model_inFer2013
+
+Submodules
+----------
+
+Eumpy.algorithm\_implement.EEG\_tool module
+-------------------------------------------
+
+.. automodule:: Eumpy.algorithm_implement.EEG_tool
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Eumpy.algorithm\_implement.adaboost\_tool module
+------------------------------------------------
+
+.. automodule:: Eumpy.algorithm_implement.adaboost_tool
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Eumpy.algorithm\_implement.enum\_tool module
+--------------------------------------------
+
+.. automodule:: Eumpy.algorithm_implement.enum_tool
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Eumpy.algorithm\_implement.face\_tool module
+--------------------------------------------
+
+.. automodule:: Eumpy.algorithm_implement.face_tool
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: Eumpy.algorithm_implement
+    :members:
+    :undoc-members:
+    :show-inheritance:

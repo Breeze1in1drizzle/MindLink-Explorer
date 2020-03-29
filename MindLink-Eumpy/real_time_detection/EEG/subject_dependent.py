@@ -1,0 +1,63 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Oct 21 18:01:20 2018
+Modified on Mon Nov 11 18:52:25 2019
+
+@author: Yongrui Huang
+@author: Ruixin Lee
+This script performs some test for subject independent problem, in order to
+compare with subject indenpennt problem.
+
+
+"""
+
+import sys
+sys.path.append('../../')
+import configuration
+from algorithm_implement import EEG_tool
+# import lstm_regression
+# this is not able to import successfully,
+# we should import module in the same package like what I did below
+
+from .import lstm_regression
+
+
+if __name__ == '__main__':
+    root_path = configuration.DATASET_PATH + 'MAHNOB_HCI/'  
+    
+    #for each subject we train 20 model
+    for subject_id in range(1, 21):
+        #calculate accuracy
+        acc_valence, acc_arousal = 0, 0
+        
+        subject_path = root_path + str(subject_id) + '/'
+        #each trial has one change to become validation set. leave-one-trial out
+        for validation_trial_id in range(1, 21):
+        
+            EEG_model = EEG_tool.EEGModel()
+            #use other 19 trial as train set
+            for train_trial_id in range(1, 21):
+                #can't put the validation trial into train set
+                if train_trial_id == validation_trial_id:
+                    continue
+                
+                #load train data
+                path = subject_path + 'trial_' + str(train_trial_id) + '/'
+                EEG_model.add_one_trial_data(path, preprocessed=True)
+            
+           
+            #feed data to model
+            EEG_model.train()
+            
+            #validation on one trial
+            path = subject_path + 'trial_' + str(validation_trial_id) + '/'
+            
+            #predict one trial
+            valence_correct, arousal_correct = EEG_model.predict_one_trial(path, preprocessed=True)
+           
+            acc_valence += 1 if valence_correct else 0
+            acc_arousal += 1 if arousal_correct else 0
+            print (valence_correct, arousal_correct)
+                
+        print ('subject: ' + str(subject_id))
+        print (acc_valence/20., acc_arousal/20.)

@@ -1,0 +1,22 @@
+Eumpy.real\_time\_detection.fusion package
+==========================================
+
+Submodules
+----------
+
+Eumpy.real\_time\_detection.fusion.enum\_model module
+-----------------------------------------------------
+
+.. automodule:: Eumpy.real_time_detection.fusion.enum_model
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: Eumpy.real_time_detection.fusion
+    :members:
+    :undoc-members:
+    :show-inheritance:

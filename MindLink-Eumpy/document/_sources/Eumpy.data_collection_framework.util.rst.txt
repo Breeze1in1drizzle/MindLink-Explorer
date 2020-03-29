@@ -1,0 +1,54 @@
+Eumpy.data\_collection\_framework.util package
+==============================================
+
+Submodules
+----------
+
+Eumpy.data\_collection\_framework.util.EEG\_record module
+---------------------------------------------------------
+
+.. automodule:: Eumpy.data_collection_framework.util.EEG_record
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Eumpy.data\_collection\_framework.util.GUI\_control module
+----------------------------------------------------------
+
+.. automodule:: Eumpy.data_collection_framework.util.GUI_control
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Eumpy.data\_collection\_framework.util.creat\_subject module
+------------------------------------------------------------
+
+.. automodule:: Eumpy.data_collection_framework.util.creat_subject
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Eumpy.data\_collection\_framework.util.face\_record module
+----------------------------------------------------------
+
+.. automodule:: Eumpy.data_collection_framework.util.face_record
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Eumpy.data\_collection\_framework.util.record module
+----------------------------------------------------
+
+.. automodule:: Eumpy.data_collection_framework.util.record
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: Eumpy.data_collection_framework.util
+    :members:
+    :undoc-members:
+    :show-inheritance:

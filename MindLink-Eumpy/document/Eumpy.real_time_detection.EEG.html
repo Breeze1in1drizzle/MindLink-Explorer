@@ -1,0 +1,587 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Eumpy.real_time_detection.EEG package &mdash; Eumpy  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Eumpy
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Eumpy.real_time_detection.EEG package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-Eumpy.real_time_detection.EEG.EEG_feature_extract">Eumpy.real_time_detection.EEG.EEG_feature_extract module</a></li>
+<li><a class="reference internal" href="#module-Eumpy.real_time_detection.EEG.lstm_classification">Eumpy.real_time_detection.EEG.lstm_classification module</a></li>
+<li><a class="reference internal" href="#module-Eumpy.real_time_detection.EEG.lstm_regression">Eumpy.real_time_detection.EEG.lstm_regression module</a></li>
+<li><a class="reference internal" href="#eumpy-real-time-detection-eeg-subject-dependent-module">Eumpy.real_time_detection.EEG.subject_dependent module</a></li>
+<li><a class="reference internal" href="#eumpy-real-time-detection-eeg-subject-independent-module">Eumpy.real_time_detection.EEG.subject_independent module</a></li>
+<li><a class="reference internal" href="#module-Eumpy.real_time_detection.EEG.svm_model">Eumpy.real_time_detection.EEG.svm_model module</a></li>
+<li><a class="reference internal" href="#module-Eumpy.real_time_detection.EEG">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Eumpy</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Eumpy.real_time_detection.EEG package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/Eumpy.real_time_detection.EEG.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="eumpy-real-time-detection-eeg-package">
+<h1>Eumpy.real_time_detection.EEG package<a class="headerlink" href="#eumpy-real-time-detection-eeg-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-Eumpy.real_time_detection.EEG.EEG_feature_extract">
+<span id="eumpy-real-time-detection-eeg-eeg-feature-extract-module"></span><h2>Eumpy.real_time_detection.EEG.EEG_feature_extract module<a class="headerlink" href="#module-Eumpy.real_time_detection.EEG.EEG_feature_extract" title="Permalink to this headline">¶</a></h2>
+<p>Created on Mon Oct 22 12:21:27 2018</p>
+<p>&#64;author: Yongrui Huang</p>
+<p>This script is used for extracting average PSD (Power spectral density) features 
+from raw EEG data. In the meantime, it also puts the features into hard disk in
+‘.npy’ format.</p>
+<p>The precess is described as follows.
+14 channels and 3 asymmetric pair channels are picked.
+For each channel, we extract their PSD feature in each unit second(e.g. 1 second)
+with a 50% overlap.</p>
+<p>Note: change tha name MAHNOB-HCI and you can extract your own data!</p>
+<dl class="function">
+<dt id="Eumpy.real_time_detection.EEG.EEG_feature_extract.add_asymmetric">
+<code class="descclassname">Eumpy.real_time_detection.EEG.EEG_feature_extract.</code><code class="descname">add_asymmetric</code><span class="sig-paren">(</span><em>raw_obj</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.EEG.EEG_feature_extract.add_asymmetric" title="Permalink to this definition">¶</a></dt>
+<dd><p>add asymmetric pair into a MNE raw object and return it. This 3 pair 
+are added. (T7-T8, Fp1-Fp2 and CP1-CP2)</p>
+<p>Arguments:</p>
+<blockquote>
+<div>raw_obj: the MNE raw object.</div></blockquote>
+<p>Returns:</p>
+<blockquote>
+<div>new_raw_obj: the new MNE raw object with more channel.</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="Eumpy.real_time_detection.EEG.EEG_feature_extract.exist_inf_data">
+<code class="descclassname">Eumpy.real_time_detection.EEG.EEG_feature_extract.</code><code class="descname">exist_inf_data</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.EEG.EEG_feature_extract.exist_inf_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>check whether INF data exist after extracting the feature</p>
+<p>Arguments:</p>
+<blockquote>
+<div>path: the trial path</div></blockquote>
+<p>Returns:</p>
+<blockquote>
+<div>True if INF data exist else False.</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="Eumpy.real_time_detection.EEG.EEG_feature_extract.exist_nan_data">
+<code class="descclassname">Eumpy.real_time_detection.EEG.EEG_feature_extract.</code><code class="descname">exist_nan_data</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.EEG.EEG_feature_extract.exist_nan_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>check whether NAN data exist after extracting the feature</p>
+<p>Arguments:</p>
+<blockquote>
+<div>path: the trial path</div></blockquote>
+<p>Returns:</p>
+<blockquote>
+<div>True if NAN data exist else False.</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="Eumpy.real_time_detection.EEG.EEG_feature_extract.extract_average_psd_from_a_trial">
+<code class="descclassname">Eumpy.real_time_detection.EEG.EEG_feature_extract.</code><code class="descname">extract_average_psd_from_a_trial</code><span class="sig-paren">(</span><em>raw_obj</em>, <em>average_second</em>, <em>overlap</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.EEG.EEG_feature_extract.extract_average_psd_from_a_trial" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method returns the average log psd features for a trial</p>
+<p>Arguments:</p>
+<blockquote>
+<div><p>raw_obj: a MNE raw object contains the information from a trial.</p>
+<p>average_second: the time unit for average the psd.</p>
+<p>overlap: how much overlap will be used.</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>features: the features of multiply sample.
+shape (the sample number, the feature number)</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="Eumpy.real_time_detection.EEG.EEG_feature_extract.get_a_channel_data_from_raw">
+<code class="descclassname">Eumpy.real_time_detection.EEG.EEG_feature_extract.</code><code class="descname">get_a_channel_data_from_raw</code><span class="sig-paren">(</span><em>raw_obj</em>, <em>channel_name</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.EEG.EEG_feature_extract.get_a_channel_data_from_raw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Arguments:</p>
+<blockquote>
+<div><p>raw_obj: raw object from MNE library.</p>
+<p>channel_name: the name of the channel.</p>
+</div></blockquote>
+<p>Returns:</p>
+<blockquote>
+<div>the numpy array data for the channel.</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="Eumpy.real_time_detection.EEG.EEG_feature_extract.get_average_psd">
+<code class="descclassname">Eumpy.real_time_detection.EEG.EEG_feature_extract.</code><code class="descname">get_average_psd</code><span class="sig-paren">(</span><em>sub_raw_obj</em>, <em>fmin</em>, <em>fmax</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.EEG.EEG_feature_extract.get_average_psd" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method returns a the average log psd feature for a MNE raw object</p>
+<p>Arguments:</p>
+<blockquote>
+<div><p>sub_raw_obj: a raw object from MNE library</p>
+<p>fmin: the minium frequency you are intreseted</p>
+<p>fmax: the maximum frequency you are intreseted</p>
+</div></blockquote>
+<p>Returns:</p>
+<blockquote>
+<div>average_psd: the required psd features, numpy array like. 
+shape: (the number of the features, )</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="Eumpy.real_time_detection.EEG.EEG_feature_extract.raw_features">
+<code class="descclassname">Eumpy.real_time_detection.EEG.EEG_feature_extract.</code><code class="descname">raw_features</code><span class="sig-paren">(</span><em>trial_path</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.EEG.EEG_feature_extract.raw_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method return raw feature from one trial. It was implemented canse
+I want to see the whether the feature extracting could make a different 
+and it did.</p>
+<p>Arguments:</p>
+<blockquote>
+<div>trial_path: the path in file system of the trial</div></blockquote>
+<p>Returns:</p>
+<blockquote>
+<div>The raw features. numpy-array-like.</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="Eumpy.real_time_detection.EEG.EEG_feature_extract.raw_to_numpy_one_trial">
+<code class="descclassname">Eumpy.real_time_detection.EEG.EEG_feature_extract.</code><code class="descname">raw_to_numpy_one_trial</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.EEG.EEG_feature_extract.raw_to_numpy_one_trial" title="Permalink to this definition">¶</a></dt>
+<dd><p>read one-trial raw EEG from hard dick, extract the feature and write it
+back.</p>
+<p>Arguments:</p>
+<blockquote>
+<div>path: the trial’s path</div></blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="module-Eumpy.real_time_detection.EEG.lstm_classification">
+<span id="eumpy-real-time-detection-eeg-lstm-classification-module"></span><h2>Eumpy.real_time_detection.EEG.lstm_classification module<a class="headerlink" href="#module-Eumpy.real_time_detection.EEG.lstm_classification" title="Permalink to this headline">¶</a></h2>
+<p>Created on Tue Oct 23 13:18:08 2018</p>
+<p>&#64;author: Yongrui Huang</p>
+<dl class="class">
+<dt id="Eumpy.real_time_detection.EEG.lstm_classification.LstmModelClf">
+<em class="property">class </em><code class="descclassname">Eumpy.real_time_detection.EEG.lstm_classification.</code><code class="descname">LstmModelClf</code><a class="headerlink" href="#Eumpy.real_time_detection.EEG.lstm_classification.LstmModelClf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>This class is used to apply lstm model to classify the valence and 
+arousal. The emotion state value (valence or arousal) ranges from 1 to
+9. We consider it as two category. When it is higher than 5, we take it
+as high category. when it is less than or equal with 5, we take it as
+low category.</p>
+<p>Attributes:</p>
+<blockquote>
+<div><p>train_X: the list saves all train sample</p>
+<p>train_valence: save the ground truth of valence</p>
+<p>train_arousal: save the ground truth of arousal</p>
+<p>model: the implement model for training and predicting</p>
+<p>X_mean: the mean vertor for the feature</p>
+<p>X_std: the standard deviation vertor for the feature</p>
+<p>X_test: the list saves all test sample</p>
+<p>test_valence: save the ground truth of valence in test</p>
+<p>test_arousal: save the ground truth of arousal in test</p>
+</div></blockquote>
+<dl class="method">
+<dt id="Eumpy.real_time_detection.EEG.lstm_classification.LstmModelClf.add_test_data">
+<code class="descname">add_test_data</code><span class="sig-paren">(</span><em>trial_path</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.EEG.lstm_classification.LstmModelClf.add_test_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>add one trial data into model for testing</p>
+<p>Arguments:</p>
+<blockquote>
+<div>trial_path: the trial path of the data</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="Eumpy.real_time_detection.EEG.lstm_classification.LstmModelClf.add_train_data">
+<code class="descname">add_train_data</code><span class="sig-paren">(</span><em>trial_path</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.EEG.lstm_classification.LstmModelClf.add_train_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>add one trial data into model for training</p>
+<p>Arguments:</p>
+<blockquote>
+<div>trial_path: the trial path of the data</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="Eumpy.real_time_detection.EEG.lstm_classification.LstmModelClf.build_model">
+<code class="descname">build_model</code><span class="sig-paren">(</span><em>input_shape</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.EEG.lstm_classification.LstmModelClf.build_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>build the model</p>
+<p>Arguments:</p>
+<blockquote>
+<div>input_shape: the input shape of the sample.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="Eumpy.real_time_detection.EEG.lstm_classification.LstmModelClf.evalute">
+<code class="descname">evalute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.EEG.lstm_classification.LstmModelClf.evalute" title="Permalink to this definition">¶</a></dt>
+<dd><p>evalute the performance</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Eumpy.real_time_detection.EEG.lstm_classification.LstmModelClf.predict">
+<code class="descname">predict</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.EEG.lstm_classification.LstmModelClf.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>predict the data using the trained model</p>
+<p>Arguments:</p>
+<blockquote>
+<div>X: the data set for predicting.
+shape: (sample number, feature number)</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="Eumpy.real_time_detection.EEG.lstm_classification.LstmModelClf.train">
+<code class="descname">train</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.EEG.lstm_classification.LstmModelClf.train" title="Permalink to this definition">¶</a></dt>
+<dd><p>train the model</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-Eumpy.real_time_detection.EEG.lstm_regression">
+<span id="eumpy-real-time-detection-eeg-lstm-regression-module"></span><h2>Eumpy.real_time_detection.EEG.lstm_regression module<a class="headerlink" href="#module-Eumpy.real_time_detection.EEG.lstm_regression" title="Permalink to this headline">¶</a></h2>
+<p>Created on Tue Oct 23 13:21:00 2018</p>
+<p>&#64;author: Yongrui Huang</p>
+<dl class="class">
+<dt id="Eumpy.real_time_detection.EEG.lstm_regression.LstmModelRegression">
+<em class="property">class </em><code class="descclassname">Eumpy.real_time_detection.EEG.lstm_regression.</code><code class="descname">LstmModelRegression</code><a class="headerlink" href="#Eumpy.real_time_detection.EEG.lstm_regression.LstmModelRegression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>This class is used to apply lstm model to predict the valence and 
+arousal. The emotion state value (valence or arousal) ranges from 1 to
+9. We consider it as a continuous value and treat this preblem as a 
+regression problem.</p>
+<p>Attributes:</p>
+<blockquote>
+<div><p>train_X: the list saves all train sample</p>
+<p>train_valence: save the ground truth of valence</p>
+<p>train_arousal: save the ground truth of arousal</p>
+<p>model: the implement model for training and predicting</p>
+<p>X_mean: the mean vertor for the feature</p>
+<p>X_std: the standard deviation vertor for the feature</p>
+<p>X_test: the list saves all test sample</p>
+<p>test_valence: save the ground truth of valence in test</p>
+<p>test_arousal: save the ground truth of arousal in test</p>
+</div></blockquote>
+<dl class="method">
+<dt id="Eumpy.real_time_detection.EEG.lstm_regression.LstmModelRegression.add_test_data">
+<code class="descname">add_test_data</code><span class="sig-paren">(</span><em>trial_path</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.EEG.lstm_regression.LstmModelRegression.add_test_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>add one trial data into model for testing</p>
+<p>Arguments:</p>
+<blockquote>
+<div>trial_path: the trial path of the data</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="Eumpy.real_time_detection.EEG.lstm_regression.LstmModelRegression.add_train_data">
+<code class="descname">add_train_data</code><span class="sig-paren">(</span><em>trial_path</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.EEG.lstm_regression.LstmModelRegression.add_train_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>add one trial data into model for training</p>
+<p>Arguments:</p>
+<blockquote>
+<div>trial_path: the trial path of the data</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="Eumpy.real_time_detection.EEG.lstm_regression.LstmModelRegression.build_model">
+<code class="descname">build_model</code><span class="sig-paren">(</span><em>input_shape</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.EEG.lstm_regression.LstmModelRegression.build_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>build the model</p>
+<p>Arguments:</p>
+<blockquote>
+<div>input_shape: the input shape of the sample.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="Eumpy.real_time_detection.EEG.lstm_regression.LstmModelRegression.evalute">
+<code class="descname">evalute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.EEG.lstm_regression.LstmModelRegression.evalute" title="Permalink to this definition">¶</a></dt>
+<dd><p>evalute the performance</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Eumpy.real_time_detection.EEG.lstm_regression.LstmModelRegression.predict">
+<code class="descname">predict</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.EEG.lstm_regression.LstmModelRegression.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>predict the data using the trained model</p>
+<p>Arguments:</p>
+<blockquote>
+<div>X: the data set for predicting.
+shape: (sample number, feature number)</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="Eumpy.real_time_detection.EEG.lstm_regression.LstmModelRegression.train">
+<code class="descname">train</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.EEG.lstm_regression.LstmModelRegression.train" title="Permalink to this definition">¶</a></dt>
+<dd><p>train the model</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="Eumpy.real_time_detection.EEG.lstm_regression.plot_arousal_training">
+<code class="descclassname">Eumpy.real_time_detection.EEG.lstm_regression.</code><code class="descname">plot_arousal_training</code><span class="sig-paren">(</span><em>history</em>, <em>filename='arousal_EEG'</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.EEG.lstm_regression.plot_arousal_training" title="Permalink to this definition">¶</a></dt>
+<dd><p>polt the train data image</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Eumpy.real_time_detection.EEG.lstm_regression.plot_valence_training">
+<code class="descclassname">Eumpy.real_time_detection.EEG.lstm_regression.</code><code class="descname">plot_valence_training</code><span class="sig-paren">(</span><em>history</em>, <em>filename='valence_EEG'</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.EEG.lstm_regression.plot_valence_training" title="Permalink to this definition">¶</a></dt>
+<dd><p>polt the train data image</p>
+</dd></dl>
+
+</div>
+<div class="section" id="eumpy-real-time-detection-eeg-subject-dependent-module">
+<h2>Eumpy.real_time_detection.EEG.subject_dependent module<a class="headerlink" href="#eumpy-real-time-detection-eeg-subject-dependent-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="eumpy-real-time-detection-eeg-subject-independent-module">
+<h2>Eumpy.real_time_detection.EEG.subject_independent module<a class="headerlink" href="#eumpy-real-time-detection-eeg-subject-independent-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-Eumpy.real_time_detection.EEG.svm_model">
+<span id="eumpy-real-time-detection-eeg-svm-model-module"></span><h2>Eumpy.real_time_detection.EEG.svm_model module<a class="headerlink" href="#module-Eumpy.real_time_detection.EEG.svm_model" title="Permalink to this headline">¶</a></h2>
+<p>Created on Tue Oct 23 10:52:01 2018</p>
+<p>&#64;author: Yongrui Huang</p>
+<dl class="class">
+<dt id="Eumpy.real_time_detection.EEG.svm_model.SvmModel">
+<em class="property">class </em><code class="descclassname">Eumpy.real_time_detection.EEG.svm_model.</code><code class="descname">SvmModel</code><a class="headerlink" href="#Eumpy.real_time_detection.EEG.svm_model.SvmModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>This class is used to apply lstm model to detect valence and 
+arousal. The emotion state value (valence or arousal) ranges from 1 to
+9. We consider it as two category. When it is higher than 5, we take it
+as high category. when it is less than or equal with 5, we take it as
+low category.
+This class also apply the regression method for treating valence and 
+arousal as continuous value and treat this preblem as a regression
+problem.</p>
+<p>Attributes:</p>
+<blockquote>
+<div><p>train_X: the list saves all train sample</p>
+<p>train_valence: save the ground truth of valence</p>
+<p>train_arousal: save the ground truth of arousal</p>
+<p>model: the implement model for training and predicting</p>
+<p>X_mean: the mean vertor for the feature</p>
+<p>X_std: the standard deviation vertor for the feature</p>
+<p>X_test: the list saves all test sample</p>
+<p>test_valence: save the ground truth of valence in test</p>
+<p>test_arousal: save the ground truth of arousal in test</p>
+</div></blockquote>
+<dl class="method">
+<dt id="Eumpy.real_time_detection.EEG.svm_model.SvmModel.add_test_data">
+<code class="descname">add_test_data</code><span class="sig-paren">(</span><em>trial_path</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.EEG.svm_model.SvmModel.add_test_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>add one trial data into model for testing</p>
+<p>Arguments:</p>
+<blockquote>
+<div>trial_path: the trial path of the data</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="Eumpy.real_time_detection.EEG.svm_model.SvmModel.add_train_data">
+<code class="descname">add_train_data</code><span class="sig-paren">(</span><em>trial_path</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.EEG.svm_model.SvmModel.add_train_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>add one trial data into model for training</p>
+<p>Arguments:</p>
+<blockquote>
+<div>trial_path: the trial path of the data</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="Eumpy.real_time_detection.EEG.svm_model.SvmModel.evalute">
+<code class="descname">evalute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.EEG.svm_model.SvmModel.evalute" title="Permalink to this definition">¶</a></dt>
+<dd><p>evalute the performance</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Eumpy.real_time_detection.EEG.svm_model.SvmModel.predict">
+<code class="descname">predict</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.EEG.svm_model.SvmModel.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>predict the data using the trained model</p>
+<p>Arguments:</p>
+<blockquote>
+<div>X: the data set for predicting.
+shape: (sample number, feature number)</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="Eumpy.real_time_detection.EEG.svm_model.SvmModel.train">
+<code class="descname">train</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.EEG.svm_model.SvmModel.train" title="Permalink to this definition">¶</a></dt>
+<dd><p>train the model</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-Eumpy.real_time_detection.EEG">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-Eumpy.real_time_detection.EEG" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Yongrui Huang
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

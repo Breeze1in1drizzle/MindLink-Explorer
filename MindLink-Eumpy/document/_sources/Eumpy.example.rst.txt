@@ -1,0 +1,110 @@
+Eumpy.example package
+=====================
+
+Submodules
+----------
+
+Eumpy.example.DEAP\_EEG\_example module
+---------------------------------------
+
+.. automodule:: Eumpy.example.DEAP_EEG_example
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Eumpy.example.DEAP\_adboost\_example module
+-------------------------------------------
+
+.. automodule:: Eumpy.example.DEAP_adboost_example
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Eumpy.example.DEAP\_enum\_example module
+----------------------------------------
+
+.. automodule:: Eumpy.example.DEAP_enum_example
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Eumpy.example.DEAP\_facial\_expression\_example module
+------------------------------------------------------
+
+.. automodule:: Eumpy.example.DEAP_facial_expression_example
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Eumpy.example.MAHNOB\_HCI\_EEG\_example module
+----------------------------------------------
+
+.. automodule:: Eumpy.example.MAHNOB_HCI_EEG_example
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Eumpy.example.MAHNOB\_HCI\_facial\_expression\_example module
+-------------------------------------------------------------
+
+.. automodule:: Eumpy.example.MAHNOB_HCI_facial_expression_example
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Eumpy.example.MANHOB\_HCI\_enum\_example module
+-----------------------------------------------
+
+.. automodule:: Eumpy.example.MANHOB_HCI_enum_example
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Eumpy.example.MANNOB\_HCI\_adaboost\_example module
+---------------------------------------------------
+
+.. automodule:: Eumpy.example.MANNOB_HCI_adaboost_example
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Eumpy.example.ONLINE\_EEG\_example module
+-----------------------------------------
+
+.. automodule:: Eumpy.example.ONLINE_EEG_example
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Eumpy.example.ONLINE\_adaboost\_example module
+----------------------------------------------
+
+.. automodule:: Eumpy.example.ONLINE_adaboost_example
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Eumpy.example.ONLINE\_enum\_example module
+------------------------------------------
+
+.. automodule:: Eumpy.example.ONLINE_enum_example
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Eumpy.example.ONLINE\_facial\_expression\_example module
+--------------------------------------------------------
+
+.. automodule:: Eumpy.example.ONLINE_facial_expression_example
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: Eumpy.example
+    :members:
+    :undoc-members:
+    :show-inheritance:

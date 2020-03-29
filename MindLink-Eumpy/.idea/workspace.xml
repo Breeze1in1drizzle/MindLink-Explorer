@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="30f80e2a-afe5-4ef4-ac4e-794b4f538730" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="MindLink-Explorer" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1X4GsNxfysYx5VD1l5SZnhktmQj" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\workSpace\vsCode_workspace\MindLink-Eumpy" />
+      <recent name="D:\workSpace\python_workspace\MindLink-Explorer\real_time_detection\GUI\Reader" />
+      <recent name="D:\workSpace\python_workspace\MindLink-Explorer\real_time_detection\GUI\static\css\video" />
+      <recent name="D:\workSpace\python_workspace\MindLink-Explorer\real_time_detection\GUI\static\js\video" />
+      <recent name="D:\workSpace\python_workspace\MindLink-Explorer\real_time_detection\GUI\static\js" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.start_GUI">
+    <configuration name="EmotivDeviceReader" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="MindLink-Explorer" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/real_time_detection/GUI" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/real_time_detection/GUI/EmotivDeviceReader.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="MindLink-Explorer" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="build_model" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="MindLink-Explorer" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/algorithm_implement/train_baseline_model_inFer2013" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/algorithm_implement/train_baseline_model_inFer2013/build_model.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="face_tool" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="MindLink-Explorer" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/algorithm_implement" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/algorithm_implement/face_tool.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="start_GUI" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="MindLink-Explorer" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/real_time_detection/GUI" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/real_time_detection/GUI/start_GUI.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="tool" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="MindLink-Explorer" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/real_time_detection/GUI" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/real_time_detection/GUI/tool.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.start_GUI" />
+        <item itemvalue="Python.build_model" />
+        <item itemvalue="Python.face_tool" />
+        <item itemvalue="Python.EmotivDeviceReader" />
+        <item itemvalue="Python.tool" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="30f80e2a-afe5-4ef4-ac4e-794b4f538730" name="Default Changelist" comment="" />
+      <created>1580298158442</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1580298158442</updated>
+      <workItem from="1580298159616" duration="1881000" />
+      <workItem from="1580309325516" duration="2873000" />
+      <workItem from="1580355277569" duration="600000" />
+      <workItem from="1580390326845" duration="1892000" />
+      <workItem from="1580459304564" duration="565000" />
+      <workItem from="1580479345241" duration="1840000" />
+      <workItem from="1580701066421" duration="21842000" />
+      <workItem from="1580992115707" duration="605000" />
+      <workItem from="1581039112963" duration="606000" />
+      <workItem from="1581047877079" duration="1092000" />
+      <workItem from="1581079292350" duration="1499000" />
+      <workItem from="1581081843459" duration="47000" />
+      <workItem from="1581131176936" duration="3076000" />
+      <workItem from="1581215514493" duration="5765000" />
+      <workItem from="1581297436679" duration="11656000" />
+      <workItem from="1581388102567" duration="7975000" />
+      <workItem from="1581479198138" duration="842000" />
+      <workItem from="1581577111289" duration="880000" />
+      <workItem from="1581776916275" duration="23000" />
+      <workItem from="1581776951217" duration="2006000" />
+      <workItem from="1581830275137" duration="3412000" />
+      <workItem from="1581991380480" duration="2269000" />
+      <workItem from="1582277783076" duration="8227000" />
+      <workItem from="1582363202762" duration="6021000" />
+      <workItem from="1582470398682" duration="874000" />
+      <workItem from="1582510076535" duration="2029000" />
+      <workItem from="1582615967017" duration="132000" />
+      <workItem from="1583133893766" duration="410000" />
+      <workItem from="1584258631640" duration="3775000" />
+      <workItem from="1584289884957" duration="12000" />
+      <workItem from="1584588908402" duration="1863000" />
+      <workItem from="1584609615059" duration="493000" />
+      <workItem from="1584691757991" duration="856000" />
+      <workItem from="1584703283937" duration="630000" />
+      <workItem from="1584712291346" duration="1195000" />
+      <workItem from="1584757301397" duration="9380000" />
+      <workItem from="1584773204746" duration="13000" />
+      <workItem from="1584773240255" duration="1288000" />
+      <workItem from="1584784886719" duration="2848000" />
+      <workItem from="1584880004783" duration="3466000" />
+      <workItem from="1585483945780" duration="87000" />
+      <workItem from="1585484073755" duration="633000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="374" y="189" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1581304726345">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state x="374" y="189" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.760@0.0.1280.760" timestamp="1581304726345" />
+    <state x="483" y="146" key="FileChooserDialogImpl" timestamp="1585484094406">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state x="483" y="146" key="FileChooserDialogImpl/0.0.1280.760@0.0.1280.760" timestamp="1585484094406" />
+    <state width="1238" height="236" key="GridCell.Tab.0.bottom" timestamp="1581334119367">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state width="1238" height="236" key="GridCell.Tab.0.bottom/0.0.1280.760@0.0.1280.760" timestamp="1581334119367" />
+    <state width="1238" height="236" key="GridCell.Tab.0.center" timestamp="1581334119367">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state width="1238" height="236" key="GridCell.Tab.0.center/0.0.1280.760@0.0.1280.760" timestamp="1581334119367" />
+    <state width="1238" height="236" key="GridCell.Tab.0.left" timestamp="1581334119367">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state width="1238" height="236" key="GridCell.Tab.0.left/0.0.1280.760@0.0.1280.760" timestamp="1581334119367" />
+    <state width="1238" height="236" key="GridCell.Tab.0.right" timestamp="1581334119367">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state width="1238" height="236" key="GridCell.Tab.0.right/0.0.1280.760@0.0.1280.760" timestamp="1581334119367" />
+    <state width="1238" height="236" key="GridCell.Tab.1.bottom" timestamp="1581334119367">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state width="1238" height="236" key="GridCell.Tab.1.bottom/0.0.1280.760@0.0.1280.760" timestamp="1581334119367" />
+    <state width="1238" height="236" key="GridCell.Tab.1.center" timestamp="1581334119367">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state width="1238" height="236" key="GridCell.Tab.1.center/0.0.1280.760@0.0.1280.760" timestamp="1581334119367" />
+    <state width="1238" height="236" key="GridCell.Tab.1.left" timestamp="1581334119367">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state width="1238" height="236" key="GridCell.Tab.1.left/0.0.1280.760@0.0.1280.760" timestamp="1581334119367" />
+    <state width="1238" height="236" key="GridCell.Tab.1.right" timestamp="1581334119367">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state width="1238" height="236" key="GridCell.Tab.1.right/0.0.1280.760@0.0.1280.760" timestamp="1581334119367" />
+    <state x="141" y="0" key="SettingsEditor" timestamp="1585484113789">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state x="141" y="0" key="SettingsEditor/0.0.1280.760@0.0.1280.760" timestamp="1585484113789" />
+    <state x="336" y="209" key="com.intellij.ide.util.TipDialog" timestamp="1585484073567">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state x="336" y="209" key="com.intellij.ide.util.TipDialog/0.0.1280.760@0.0.1280.760" timestamp="1585484073567" />
+    <state x="303" y="82" width="672" height="678" key="search.everywhere.popup" timestamp="1580716397610">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state x="303" y="82" width="672" height="678" key="search.everywhere.popup/0.0.1280.760@0.0.1280.760" timestamp="1580716397610" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/MindLink_Explorer$start_GUI.coverage" NAME="start_GUI Coverage Results" MODIFIED="1581334115501" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/real_time_detection/GUI" />
+    <SUITE FILE_PATH="coverage/MindLink_Explorer$mytool.coverage" NAME="mytool Coverage Results" MODIFIED="1580712489404" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/real_time_detection/GUI/MLE_tool" />
+  </component>
+</project>

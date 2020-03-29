@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="../static/css/cdn/bootstrap.min.css"
+		  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+		  crossorigin="anonymous">
+	<style type="text/css">
+			.btn-circle.btn-xl {
+			  width: 70px;
+			  height: 70px;
+			  padding: 10px 16px;
+			  font-size:22px;
+			  line-height: 1.33;
+			  border-radius: 35px;
+			  margin: 40px 5px;
+			}
+    </style>
+</head>
+<body style="background-color:rgb(51,51,51);">
+	<div>
+		<div style="float: left; margin-right: 30px;">
+			<p style="font-size: 40px; font-weight:bold; color: #00BFFF;">Theta</p>
+			<p style=" font-size: 20px; color: #F0F8FF;">4~8 Hz</p>
+			<button id = 'theta_start_btn' type ='button' class='btn btn-info btn-circle btn-xl' >
+				start
+			</button>
+			<br />
+			<button id = 'theta_stop_btn' type ='button' class='btn btn-info btn-circle btn-xl' >
+				Stop
+			</button>
+		</div>
+		<div id="theta_3D" style="float:left; border: solid white 1px;">
+			
+		</div>
+	</div>
+	
+	<div>
+		<div style="float: left; margin-right: 20px; margin-left: 100px;">
+			<p style="font-size: 40px; font-weight:bold; color: #00BFFF;">Alpha</p>
+			<p style=" font-size: 20px; color: #F0F8FF;">8~12 Hz</p>
+			<button id = 'alpha_start_btn' type ='button' class='btn btn-info btn-circle btn-xl' >
+				start
+			</button>
+			<br />
+			<button id = 'alpha_stop_btn' type ='button' class='btn btn-info btn-circle btn-xl' >
+				Stop
+			</button>
+		</div>
+		<div id="alpha_3D" style="float:left; border: solid white 1px;">
+			
+		</div>
+	</div>
+	
+	<div style="">
+		<div style="margin-top: 30px; float: left; margin-right: 40px;">
+			<p style="font-size: 40px; font-weight:bold; color: #00BFFF;">Beta</p>
+			<p style=" font-size: 20px; color: #F0F8FF;">12~30 Hz</p>
+			<button id = 'beta_start_btn' type ='button' class='btn btn-info btn-circle btn-xl' >
+				start
+			</button>
+			<br />
+			<button id = 'beta_stop_btn' type ='button' class='btn btn-info btn-circle btn-xl' >
+				Stop
+			</button>
+		</div>
+		<div id="beta_3D" style="margin-top: 30px; float:left; border: solid white 1px;">
+			
+		</div>
+	</div>
+	
+	<div>
+		<div style="float: left; margin-top: 30px;  margin-right: 20px; margin-left: 80px;">
+			<p style="font-size: 40px; font-weight:bold; color: #00BFFF;">Gamma</p>
+			<p style=" font-size: 20px; color: #F0F8FF;">30~45 Hz</p>
+			<button id = 'gamma_start_btn' type ='button' class='btn btn-info btn-circle btn-xl' >
+				start
+			</button>
+			<br />
+			<button id = 'gamma_stop_btn' type ='button' class='btn btn-info btn-circle btn-xl' >
+				Stop
+			</button>
+		</div>
+		<div id="gamma_3D" style="margin-top: 30px; float:left; border: solid white 1px;">
+			
+		</div>
+	</div>
+	
+</body>
+<script src="static/js/three.js"></script>
+<script src="static/js/ColladaLoader.js"></script>
+<script src="static/js/OrbitControls.js"></script>
+<script src="static/js/dat.gui.min.js"></script>
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script> -->
+<script src="../static/js/ajax/jquery.min.js"></script>
+<script type="text/javascript" src="static/js/configuration.js" ></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-json/2.6.0/jquery.json.min.js"></script> -->
+<script src="../static/js/cdnjs/jquery.json.min.js"></script>
+<script>
+	function generate_animation_indiv(name){
+		var width = window.innerWidth / 2.5;
+		var heigth = window.innerHeight / 2.1;
+		$('#' + name + '_3D').width(width);
+		$('#' + name + '_3D').height(heigth);
+		var renderer;
+	    function initRender() {
+	        renderer = new THREE.WebGLRenderer({antialias:true});
+	        //告诉渲染器需要阴影效果
+	        renderer.setClearColor(0x333333);
+	        renderer.setSize( width, heigth );
+	        
+	        var scene3d = document.getElementById(name + '_3D');
+	        scene3d.appendChild(renderer.domElement);
+			
+	    }
+	
+	    var camera;
+	    function initCamera() {
+	        var radius = 40;
+	        var angle = 0;
+	        camera = new THREE.PerspectiveCamera(35, window.innerWidth/window.innerHeight, 1, 1000);
+	        camera.position.set(0, -radius, 0);
+	        camera.lookAt(new THREE.Vector3(0,0,100));
+	        
+	        var keep_add = true;
+	        function move_camera(){
+	        	camera.position.y =  -radius * Math.cos(angle);
+			    camera.position.z = radius * Math.sin(angle);
+			    if (keep_add){
+			    	angle += 30*Math.PI/180;	
+			    }else{
+			    	angle -= 30*Math.PI/180;
+			    }
+			    if (angle < 30*Math.PI/180){
+			    	keep_add = true;
+			    }
+			    if (angle > 90*Math.PI/180){
+			    	keep_add = false;
+			    }
+			    
+	        }
+	        var interval = setInterval(move_camera,1000);
+	        var running = true;
+	        
+	        $('#' + name +'_start_btn').click(function(){
+	        	if(running == false){
+	        		interval = setInterval(move_camera,1000);
+	        		running = true;
+	        	}
+	        });
+	        
+	        
+	        $('#' + name +'_stop_btn').click(function(){
+	        	if(running == true){
+	        		clearInterval(interval);
+	        		running = false;
+	        	}
+	        });
+	    }
+	
+	    var scene;
+	    function initScene() {
+	        scene = new THREE.Scene();
+	    }
+	
+	    var Pz_light, T7_light, T8_light, AF3_light, AF4_light;
+	    function initLight() {
+	    	
+	        Pz_light = new THREE.PointLight(0x800080, 0, 20);
+	        Pz_light.position.set(-5.5,8,12);
+	        scene.add(Pz_light);
+	
+	        T7_light = new THREE.PointLight(0xFF0000, 0, 20);
+	        T7_light.position.set(-2,5,10);
+	    	scene.add(T7_light);
+	//  	scene.add(new THREE.PointLightHelper(T7_light, 1));
+		
+	    	T8_light = new THREE.PointLight(0xFF0000, 0, 20);
+	        T8_light.position.set(-9.5,5,10);
+	    	scene.add(T8_light);
+	//  	scene.add(new THREE.PointLightHelper(T8_light, 1));
+	
+			AF3_light = new THREE.PointLight(0xFFFF00, 0, 20);
+	        AF3_light.position.set(-3,-2,10);
+	    	scene.add(AF3_light);
+	//  	scene.add(new THREE.PointLightHelper(AF3_light, 1));
+	
+			AF4_light = new THREE.PointLight(0xFFFF00, 0, 20);
+	        AF4_light.position.set(-9.5,-2,10);
+	    	scene.add(AF4_light);
+	//  	scene.add(new THREE.PointLightHelper(AF4_light, 1));
+	
+			var front_light = new THREE.PointLight(0xffffff, 80, 10);
+	        front_light.position.set(-5.5,-6, 7);
+	    	scene.add(front_light);
+	//		scene.add(new THREE.PointLightHelper(front_light, 1));
+			
+			var down_light = new THREE.PointLight(0xffffff, 80, 12);
+	        down_light.position.set(-5.5,-1, 1);
+	    	scene.add(down_light);
+			
+			var back_light = new THREE.PointLight(0xffffff, 80, 12);
+			back_light.position.set(-5.8,6,3);
+	    	scene.add(back_light);
+	    	
+	    	var left_light = new THREE.PointLight(0xffffff, 80, 3);
+			left_light.position.set(-3, 3, 3);
+	    	scene.add(left_light);
+	    	
+	    	var right_light = new THREE.PointLight(0xffffff, 80, 4);
+			right_light.position.set(-9, 4, 3);
+	    	scene.add(right_light);
+	//		scene.add(new THREE.PointLightHelper(right_light, 1));
+			
+			var left_up_light = new THREE.PointLight(0xffffff, 80, 5);
+			left_up_light.position.set(-1, 1, 3);
+	    	scene.add(left_up_light);
+	    	
+			var right_up_light = new THREE.PointLight(0xffffff, 80, 5);
+			right_up_light.position.set(-9, 0, 3);
+	    	scene.add(right_up_light);
+	//		scene.add(new THREE.PointLightHelper(right_up_light, 1));
+			    
+	    }
+		
+	    function initModel() {
+	        //辅助工具
+	        var helper = new THREE.AxesHelper(50);
+	        scene.add(helper);
+	        var loader = new THREE.ColladaLoader();			
+	        var mesh;
+	        loader.load("static/model/model.dae", function (result) {
+	            mesh = result.scene.children[0].clone();
+	            scene.add(mesh);
+	            
+	        });
+	    }
+	
+	    //用户交互插件 鼠标左键按住旋转，右键按住平移，滚轮缩放
+	    var controls;
+	    function initControls() {
+	
+	        controls = new THREE.OrbitControls( camera, renderer.domElement );
+			controls.center.set(0,0,0);
+	        // 如果使用animate方法时，将此函数删除
+	        //controls.addEventListener( 'change', render );
+	        // 使动画循环使用时阻尼或自转 意思是否有惯性
+	        controls.enableDamping = true;
+	        //动态阻尼系数 就是鼠标拖拽旋转灵敏度
+	        //controls.dampingFactor = 0.25;
+	        //是否可以缩放
+	        controls.enableZoom = true;
+	        //是否自动旋转
+//	        controls.autoRotate = true;
+	        controls.autoRotateSpeed = 0.5;
+	        //设置相机距离原点的最远距离
+	        controls.minDistance  = 1;
+	        //设置相机距离原点的最远距离
+	        controls.maxDistance  = 200;
+	        //是否开启右键拖拽
+	        controls.enablePan = true;
+	    }
+	
+	    function render() {
+	
+	        renderer.render( scene, camera );
+	    }
+	
+	    //窗口变动触发的函数
+	    function onWindowResize() {
+	
+	        camera.aspect = window.innerWidth / window.innerHeight;
+	        camera.updateProjectionMatrix();
+	        
+	        render();
+	        
+	        var width = window.innerWidth / 2.5;
+			var heigth = window.innerHeight / 2.1;
+			$('#' + name + '_3D').width(width);
+			$('#' + name + '_3D').height(heigth);
+	        renderer.setSize( width, heigth );
+	
+	    }
+	
+	    function animate() {
+	        //更新控制器
+	        render();
+	
+	        controls.update();
+	        requestAnimationFrame(animate);
+	    }
+	
+	    initRender();
+	    initScene();
+	    initCamera();
+	    initLight();
+		initModel();
+	    initControls();
+		animate();
+		
+		window.onresize = onWindowResize;
+    
+        return [AF3_light, AF4_light, T7_light, T8_light, Pz_light];
+        
+//      setInterval(function(){
+//		    light.intensity = light.intensity - 1;
+//          light.color.setHex(0xff0000);	
+//		},1000);
+        
+    }
+	
+	function get_float(strs){
+				
+		var arr = [];
+		for(var i = 0; i < strs.length; i++){
+					
+			var num = parseFloat(strs[i]);
+			if (strs[i].length > 0){
+				arr.push(num);
+			}		
+		}	
+		return arr;
+	}
+	
+	$(document).ready(function(){
+		
+		var theta_light = generate_animation_indiv('theta');
+		var alpha_light = generate_animation_indiv('alpha');
+		var beta_light = generate_animation_indiv('beta');
+		var gamma_light = generate_animation_indiv('gamma');
+		
+		var light = theta_light.concat(alpha_light).concat(beta_light).concat(gamma_light);
+		
+		setInterval(function(){
+			$.post(server_url+'get_EEG_PSD', 
+    				function(data, status){
+    					var psd_strs = data.split(' ');
+						var psd_data = get_float(psd_strs);
+						for (var i = 0; i < 20; i++){
+							light[i].intensity = psd_data[i];
+						}
+    				});
+		}, 1000);
+		}
+	);
+	
+	
+    
+</script>
+</html>

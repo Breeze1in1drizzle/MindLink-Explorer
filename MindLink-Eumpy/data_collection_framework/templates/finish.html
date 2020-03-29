@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>结束页面</title>
+		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">  	
+   		<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+   		<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
+		<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+		<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-json/2.6.0/jquery.json.min.js"></script>
+		<script src="static/js/configuration.js" type="text/javascript"></script>
+		<script>
+		
+			$().ready(function() {
+				var h = $(window).height()/2 - 50;
+				var top1 = h + "px";
+				
+				$('#finish_text').css("margin-top",top1);
+    				
+                
+        					
+			});
+			
+			function sleep(time){
+  				var start = Date.parse(new Date());
+  				
+  				while(1){
+  					var now =Date.parse(new Date());
+  					if (now-start > time){
+  						break;
+  					}
+  				}
+			}	
+			
+			$(function(){
+  				var countDownTime=parseInt(3);    
+  				function countDown(countDownTime){
+    				var timer=setInterval(function(){
+     				if(countDownTime>=0){
+       					showTime(countDownTime);
+       					countDownTime--;
+      				}else{
+        				clearInterval(timer);
+        				
+    					$.post(server_url+"experiment_over", "",
+            				function(data, status){
+    					
+            				},'json');
+        					
+      				}
+        			}, 1000);
+  				}
+  				countDown(countDownTime);
+  				function showTime(countDownTime){     
+    				var minute=Math.floor(countDownTime/60);
+    				var second=countDownTime-minute*60;
+    						
+    				var text1 = "This page will be colsed in " + second + " second" 
+    				$("#experiment_over_count_down_text").text(text1);
+  				}
+		})
+			
+		</script>
+	</head>
+	<body>
+
+		<div id="count_down_div" style="margin:300px auto; width: 80%; height: 80%; text-align: center; ">
+	  		
+		    	<p style="font-weight: 900; font-size: 65px;" id = 'experiment_over'>The experiment is over, thanks for your participating</p>
+    			<p style="font-weight: 900; font-size: 35px; color:gray" id = 'experiment_over_count_down_text'></p>
+		</div>
+	</body>
+</html>

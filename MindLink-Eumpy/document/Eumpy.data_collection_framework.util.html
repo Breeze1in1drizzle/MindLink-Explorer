@@ -1,0 +1,501 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Eumpy.data_collection_framework.util package &mdash; Eumpy  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Eumpy
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Eumpy.data_collection_framework.util package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-Eumpy.data_collection_framework.util.EEG_record">Eumpy.data_collection_framework.util.EEG_record module</a></li>
+<li><a class="reference internal" href="#module-Eumpy.data_collection_framework.util.GUI_control">Eumpy.data_collection_framework.util.GUI_control module</a></li>
+<li><a class="reference internal" href="#module-Eumpy.data_collection_framework.util.creat_subject">Eumpy.data_collection_framework.util.creat_subject module</a></li>
+<li><a class="reference internal" href="#module-Eumpy.data_collection_framework.util.face_record">Eumpy.data_collection_framework.util.face_record module</a></li>
+<li><a class="reference internal" href="#module-Eumpy.data_collection_framework.util.record">Eumpy.data_collection_framework.util.record module</a></li>
+<li><a class="reference internal" href="#module-Eumpy.data_collection_framework.util">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Eumpy</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Eumpy.data_collection_framework.util package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/Eumpy.data_collection_framework.util.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="eumpy-data-collection-framework-util-package">
+<h1>Eumpy.data_collection_framework.util package<a class="headerlink" href="#eumpy-data-collection-framework-util-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-Eumpy.data_collection_framework.util.EEG_record">
+<span id="eumpy-data-collection-framework-util-eeg-record-module"></span><h2>Eumpy.data_collection_framework.util.EEG_record module<a class="headerlink" href="#module-Eumpy.data_collection_framework.util.EEG_record" title="Permalink to this headline">¶</a></h2>
+<p>Created on Thu Oct 18 11:42:40 2018</p>
+<p>&#64;author: Yongrui Huang</p>
+<dl class="class">
+<dt id="Eumpy.data_collection_framework.util.EEG_record.EEGRecorder">
+<em class="property">class </em><code class="descclassname">Eumpy.data_collection_framework.util.EEG_record.</code><code class="descname">EEGRecorder</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.data_collection_framework.util.EEG_record.EEGRecorder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">data_collection_framework.util.record.AbstractRecorder</span></code></p>
+<blockquote>
+<div>This class gives an example of how to use AbsRecorder to record EEG data.
+Specially, the devices we used is emotiv insight.
+It should be noted that this code may not work well for your envirnoment,</div></blockquote>
+<p>since the device (emotiv insight) is relied on different platform and 
+different verson of progarm language. I used windows64 ana python 3.5 
+for my development.</p>
+<blockquote>
+<div>You may noticed that the code here is very complexe. However, I just copied</div></blockquote>
+<p>the code that emotiv company released and modify just a litte bit, basically.</p>
+<dl class="method">
+<dt id="Eumpy.data_collection_framework.util.EEG_record.EEGRecorder.record_one_sample">
+<code class="descname">record_one_sample</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.data_collection_framework.util.EEG_record.EEGRecorder.record_one_sample" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>This method is supposed to read one data sample from information</div></blockquote>
+<p>source. For EEG using emotiv insight, it means recording signal from
+5 different channel (i.e, IED_AF3, IED_AF4, IED_T7, IED_T8, IED_Pz) and 
+each channel’s PSD features (i.e. theta, alpha, low_beta, high_beta, gamma).
+25 features totally to be treated as a sample.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Eumpy.data_collection_framework.util.EEG_record.EEGRecorder.release_resourse_in_one_trial">
+<code class="descname">release_resourse_in_one_trial</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.data_collection_framework.util.EEG_record.EEGRecorder.release_resourse_in_one_trial" title="Permalink to this definition">¶</a></dt>
+<dd><p>You will implement this method to release resourse when one trial ends.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-Eumpy.data_collection_framework.util.GUI_control">
+<span id="eumpy-data-collection-framework-util-gui-control-module"></span><h2>Eumpy.data_collection_framework.util.GUI_control module<a class="headerlink" href="#module-Eumpy.data_collection_framework.util.GUI_control" title="Permalink to this headline">¶</a></h2>
+<p>Created on Fri Oct 19 12:46:36 2018</p>
+<p>&#64;author: Yongrui Huang</p>
+<dl class="function">
+<dt id="Eumpy.data_collection_framework.util.GUI_control.close_browser">
+<code class="descclassname">Eumpy.data_collection_framework.util.GUI_control.</code><code class="descname">close_browser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.data_collection_framework.util.GUI_control.close_browser" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>This method is used for closing the browser
+TODO: make it work even in Linux, it only works in windows because the</div></blockquote>
+<p>commond belongs to windows.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Eumpy.data_collection_framework.util.GUI_control.find_pid_from_name">
+<code class="descclassname">Eumpy.data_collection_framework.util.GUI_control.</code><code class="descname">find_pid_from_name</code><span class="sig-paren">(</span><em>process_name</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.data_collection_framework.util.GUI_control.find_pid_from_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used for finding the process id by their name.
+Some process’ name corresponds multiple process, we only return the 
+first one because when the first one is killed, the other will die too.</p>
+<p>Arguments:</p>
+<blockquote>
+<div>process_name: the name of the process</div></blockquote>
+<p>Returns:</p>
+<blockquote>
+<div><p>process_exist: whether the process_exist, return True if exist</p>
+<p>pid: the process’ id, string</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="Eumpy.data_collection_framework.util.GUI_control.find_pid_from_output">
+<code class="descclassname">Eumpy.data_collection_framework.util.GUI_control.</code><code class="descname">find_pid_from_output</code><span class="sig-paren">(</span><em>output</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.data_collection_framework.util.GUI_control.find_pid_from_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used for finding the pid from commond’s one-line output.
+We only kill the process whose status is listening.</p>
+<p>Arguments:</p>
+<blockquote>
+<div>output: a string from commond</div></blockquote>
+<p>Returns:</p>
+<blockquote>
+<div>the pid</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="Eumpy.data_collection_framework.util.GUI_control.kill_process_by_port">
+<code class="descclassname">Eumpy.data_collection_framework.util.GUI_control.</code><code class="descname">kill_process_by_port</code><span class="sig-paren">(</span><em>port</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.data_collection_framework.util.GUI_control.kill_process_by_port" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used for killing the process by its port
+Specially, we use it to kill the falsk when the experiment is over.</p>
+<p>TODO: apply it in Linux. Note that this method works only for Windows
+so far, since its API belongs to Windows. Specially, ‘the kill_commond’</p>
+<p>Arguments:</p>
+<blockquote>
+<div>port: a string describes the number of the port the process is taking.</div></blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="module-Eumpy.data_collection_framework.util.creat_subject">
+<span id="eumpy-data-collection-framework-util-creat-subject-module"></span><h2>Eumpy.data_collection_framework.util.creat_subject module<a class="headerlink" href="#module-Eumpy.data_collection_framework.util.creat_subject" title="Permalink to this headline">¶</a></h2>
+<p>Created on 2017/11/3</p>
+<p>&#64;author: hyr</p>
+<dl class="function">
+<dt id="Eumpy.data_collection_framework.util.creat_subject.creat_subject">
+<code class="descclassname">Eumpy.data_collection_framework.util.creat_subject.</code><code class="descname">creat_subject</code><span class="sig-paren">(</span><em>name</em>, <em>age</em>, <em>gender</em>, <em>trial_num</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.data_collection_framework.util.creat_subject.creat_subject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a subject csv file for each subject when they fill their information</p>
+<p>Arguments:</p>
+<blockquote>
+<div><p>name: the subject’s name in English, a string</p>
+<p>age: the subject’s age, a interger</p>
+<p>gender: the subject’s gender, female or male</p>
+<p>trial_num: the number of trial subject intend to do, ranges from 1 to 40</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="Eumpy.data_collection_framework.util.creat_subject.make_trial_dir">
+<code class="descclassname">Eumpy.data_collection_framework.util.creat_subject.</code><code class="descname">make_trial_dir</code><span class="sig-paren">(</span><em>path</em>, <em>trial_num</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.data_collection_framework.util.creat_subject.make_trial_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create trial’s directory for subjects</p>
+<p>Arguments:</p>
+<blockquote>
+<div><p>path: the target path</p>
+<p>trial_num: how much trail this subject will do.</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="Eumpy.data_collection_framework.util.creat_subject.makedir">
+<code class="descclassname">Eumpy.data_collection_framework.util.creat_subject.</code><code class="descname">makedir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.data_collection_framework.util.creat_subject.makedir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a subject’s directory in target path from configuration.py</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Eumpy.data_collection_framework.util.creat_subject.save_SAM_label">
+<code class="descclassname">Eumpy.data_collection_framework.util.creat_subject.</code><code class="descname">save_SAM_label</code><span class="sig-paren">(</span><em>trial_id</em>, <em>valence</em>, <em>arousal</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.data_collection_framework.util.creat_subject.save_SAM_label" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creat a csv file to storage the ground truth lable of the subject</p>
+<p>Arguments:</p>
+<blockquote>
+<div><p>trial_id: which trial it is.</p>
+<p>valence: the ground truth label in valence space, between 1 and 9</p>
+<p>arousal: the ground truth label in arousal space, between 1 and 9</p>
+</div></blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="module-Eumpy.data_collection_framework.util.face_record">
+<span id="eumpy-data-collection-framework-util-face-record-module"></span><h2>Eumpy.data_collection_framework.util.face_record module<a class="headerlink" href="#module-Eumpy.data_collection_framework.util.face_record" title="Permalink to this headline">¶</a></h2>
+<p>Created on Thu Oct 18 10:56:13 2018</p>
+<p>&#64;author: Yongrui Huang</p>
+<dl class="class">
+<dt id="Eumpy.data_collection_framework.util.face_record.FacialExpressionRecorder">
+<em class="property">class </em><code class="descclassname">Eumpy.data_collection_framework.util.face_record.</code><code class="descname">FacialExpressionRecorder</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.data_collection_framework.util.face_record.FacialExpressionRecorder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">data_collection_framework.util.record.AbstractRecorder</span></code></p>
+<blockquote>
+<div>This class gives an example of how to use AnstractRecorder to record</div></blockquote>
+<dl class="docutils">
+<dt>faces data.</dt>
+<dd>We just need to implement the function ‘record_one_sample’, to collect</dd>
+</dl>
+<p>one sample of data from camera. Please notes that here we collected the 
+whole image without finding one’s face, if you intend to use the collected,
+you will have to find the faces from the image using opencv or other tools.</p>
+<blockquote>
+<div>As for release resourse, we have no resourse to release here.</div></blockquote>
+<dl class="method">
+<dt id="Eumpy.data_collection_framework.util.face_record.FacialExpressionRecorder.record_one_sample">
+<code class="descname">record_one_sample</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.data_collection_framework.util.face_record.FacialExpressionRecorder.record_one_sample" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>This method is supposed to read one data sample from information</div></blockquote>
+<p>source. For facial expression, we use opencv API to read one  image
+from camera. In my demo, the camera is the standard camera from my 
+laptop. The steps are simply as follows.</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>opencv a handle</li>
+<li>read an image from the handle</li>
+<li>return the image</li>
+</ol>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="Eumpy.data_collection_framework.util.face_record.FacialExpressionRecorder.release_resourse_in_one_trial">
+<code class="descname">release_resourse_in_one_trial</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.data_collection_framework.util.face_record.FacialExpressionRecorder.release_resourse_in_one_trial" title="Permalink to this definition">¶</a></dt>
+<dd><p>You will implement this method to release resourse when one trial ends.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-Eumpy.data_collection_framework.util.record">
+<span id="eumpy-data-collection-framework-util-record-module"></span><h2>Eumpy.data_collection_framework.util.record module<a class="headerlink" href="#module-Eumpy.data_collection_framework.util.record" title="Permalink to this headline">¶</a></h2>
+<p>Created on Wed Oct 17 14:45:35 2018</p>
+<p>&#64;author: Yongrui Huang</p>
+<dl class="class">
+<dt id="Eumpy.data_collection_framework.util.record.AbstractRecorder">
+<em class="property">class </em><code class="descclassname">Eumpy.data_collection_framework.util.record.</code><code class="descname">AbstractRecorder</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.data_collection_framework.util.record.AbstractRecorder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<blockquote>
+<div>If you want to create your own recorder. For example, you want to</div></blockquote>
+<p>record ECG (Electrocardiogram), you just need to inherit this class 
+and implement two method (record_one_sample and release_resourse_in_one_trial).
+In most time, you just need to implement one method record_one_sample.</p>
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd><blockquote class="first">
+<div><p>trial_id: the current id of the trial, it will change during recording</p>
+<p>queue: the queue for sharing data in different process.</p>
+<p>data_list: the list for saving data in RAM. Everytime one trial ends,</p>
+</div></blockquote>
+<p>its data will be written into harddisk and then be clear.</p>
+<blockquote>
+<div>sub_process: the sub-process for read data from sensor. We need the</div></blockquote>
+<p>father process to provide GUI during recording.</p>
+<blockquote class="last">
+<div><p>save_file_name: the data file’s name, a string</p>
+<p>base_bath: the path that saves the data</p>
+</div></blockquote>
+</dd>
+</dl>
+<dl class="method">
+<dt id="Eumpy.data_collection_framework.util.record.AbstractRecorder.end_one_trial">
+<code class="descname">end_one_trial</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.data_collection_framework.util.record.AbstractRecorder.end_one_trial" title="Permalink to this definition">¶</a></dt>
+<dd><p>When one trial ends, we follow these steps.</p>
+<ol class="arabic simple">
+<li>retrieve data from queue and put them into data_list.</li>
+<li>terminate the process.</li>
+<li>save the data in data_list into hard disk.</li>
+<li>reset data_list.</li>
+<li>release all resourse in one trial.</li>
+</ol>
+</dd></dl>
+
+<dl class="method">
+<dt id="Eumpy.data_collection_framework.util.record.AbstractRecorder.record">
+<code class="descname">record</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.data_collection_framework.util.record.AbstractRecorder.record" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>This method starts in a new process.
+I use a loop to continue reading data into queue from sensor. It</div></blockquote>
+<p>wiil be terminated when the trial ends.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Eumpy.data_collection_framework.util.record.AbstractRecorder.record_one_sample">
+<code class="descname">record_one_sample</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.data_collection_framework.util.record.AbstractRecorder.record_one_sample" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>This is the key method you should implement. It is used for reading</div></blockquote>
+<p>one sample from your sensor. For example, you will return an image if
+your minimum data unit (one sample) in your model is an image. Similarly,
+you will return a vedio if your minimum data unit (one sample) in 
+your model is a vedio. Please check how I implement it in face_record.py.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>One sample, the minimum data unit for training.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Eumpy.data_collection_framework.util.record.AbstractRecorder.release_resourse_in_one_trial">
+<code class="descname">release_resourse_in_one_trial</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.data_collection_framework.util.record.AbstractRecorder.release_resourse_in_one_trial" title="Permalink to this definition">¶</a></dt>
+<dd><p>You will implement this method to release resourse when one trial ends.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Eumpy.data_collection_framework.util.record.AbstractRecorder.save">
+<code class="descname">save</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.data_collection_framework.util.record.AbstractRecorder.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>save the data in data_list into hard disk</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Eumpy.data_collection_framework.util.record.AbstractRecorder.start_one_trial">
+<code class="descname">start_one_trial</code><span class="sig-paren">(</span><em>trail_id</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.data_collection_framework.util.record.AbstractRecorder.start_one_trial" title="Permalink to this definition">¶</a></dt>
+<dd><p>when one trial starts, we clear the queue and start a new process
+to read data.</p>
+<p>Aruguments:</p>
+<blockquote>
+<div>trial_id: the current trial’s id</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-Eumpy.data_collection_framework.util">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-Eumpy.data_collection_framework.util" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Yongrui Huang
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

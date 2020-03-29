@@ -1,0 +1,62 @@
+Eumpy.real\_time\_detection.EEG package
+=======================================
+
+Submodules
+----------
+
+Eumpy.real\_time\_detection.EEG.EEG\_feature\_extract module
+------------------------------------------------------------
+
+.. automodule:: Eumpy.real_time_detection.EEG.EEG_feature_extract
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Eumpy.real\_time\_detection.EEG.lstm\_classification module
+-----------------------------------------------------------
+
+.. automodule:: Eumpy.real_time_detection.EEG.lstm_classification
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Eumpy.real\_time\_detection.EEG.lstm\_regression module
+-------------------------------------------------------
+
+.. automodule:: Eumpy.real_time_detection.EEG.lstm_regression
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Eumpy.real\_time\_detection.EEG.subject\_dependent module
+---------------------------------------------------------
+
+.. automodule:: Eumpy.real_time_detection.EEG.subject_dependent
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Eumpy.real\_time\_detection.EEG.subject\_independent module
+-----------------------------------------------------------
+
+.. automodule:: Eumpy.real_time_detection.EEG.subject_independent
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Eumpy.real\_time\_detection.EEG.svm\_model module
+-------------------------------------------------
+
+.. automodule:: Eumpy.real_time_detection.EEG.svm_model
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: Eumpy.real_time_detection.EEG
+    :members:
+    :undoc-members:
+    :show-inheritance:

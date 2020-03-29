@@ -1,0 +1,32 @@
+Eumpy.real\_time\_detection package
+===================================
+
+Subpackages
+-----------
+
+.. toctree::
+
+    Eumpy.real_time_detection.EEG
+    Eumpy.real_time_detection.GUI
+    Eumpy.real_time_detection.facial_expression
+    Eumpy.real_time_detection.fusion
+
+Submodules
+----------
+
+Eumpy.real\_time\_detection.continuous\_to\_discrete module
+-----------------------------------------------------------
+
+.. automodule:: Eumpy.real_time_detection.continuous_to_discrete
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: Eumpy.real_time_detection
+    :members:
+    :undoc-members:
+    :show-inheritance:

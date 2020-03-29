@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script> -->
+		<script src="../static/js/ajax/jquery.min.js"></script>
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-json/2.6.0/jquery.json.min.js"></script> -->
+		<script src="../static/js/cdnjs/jquery.json.min.js"></script>
+		<script type="text/javascript" src="../static/js/configuration.js" ></script>
+		<script type="text/javascript" src="../static/js/echarts.min.js" ></script>
+<!--		 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+		<link rel="stylesheet" href="../static/css/cdn/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<script>
+			String.prototype.format= function(){
+			    
+			    var args = Array.prototype.slice.call(arguments);
+			    var count=0;
+				
+			    return this.replace(/%s/g,function(s,i){
+			        return args[count++];
+			    });
+			}
+			
+			function reset_div_height(){
+				var screen_heigth = $(window).height();
+ 				var div_height = screen_heigth/2;
+   				$('#video').height(div_height);
+   				$('#results').height(div_height);
+ 				$('#EEG').height(div_height*0.95);
+ 				
+ 				var switch_plane_height = $('#switch_plane').height();
+ 				$('#switch_div').css('padding-top', switch_plane_height/2.5);
+ 				
+ 				var switch_btn_width = $('#switch_btn').width();
+ 				$('#switch_image').width(switch_btn_width*1.29);
+ 				
+ 			}
+			
+			
+			
+			function show_video(){
+			
+    			
+    			$.post(server_url+'get_faces_data', 
+    				function(data, status){
+    					var file_name = data;
+						var next_src = 'static/cache_image/%s.png'.format(file_name);
+						
+						$('#video_img').attr('src', next_src);
+						$('#video_img').height($('#video').height());
+						
+						
+    				});
+				
+    				
+			}
+			
+			function set_EEG_chart(AF3, AF4, T7, T8, Pz){
+				var myChart = echarts.init(document.getElementById('EEG'), 'dark');
+				option = {
+				    title: {
+				        text: 'EEG'
+				    },
+				    legend: {
+				        data:['AF3','AF4','T7','T8','Pz']
+				    },
+				    grid: {
+				        left: '0%',
+				        right: '0%',
+				        bottom: '0%',
+				        containLabel: false
+				    },
+				    xAxis: {
+				        type: 'category',
+				         splitLine: {
+				            show: false
+				        },
+				        boundaryGap: false,
+				        min:0,
+				        max:2570,
+				        
+				    },
+				    yAxis: {
+				    	
+				        type: 'value',
+				         splitLine: {
+				            show: false
+				        },
+				    },
+				    series: [
+				        {
+				            name:'AF3',
+				            type:'line',
+				            stack: '总量',
+				            data:AF3
+				        },
+				        {
+				            name:'AF4',
+				            type:'line',
+				            stack: '总量',
+				            data:AF4
+				        },
+				        {
+				            name:'T7',
+				            type:'line',
+				            stack: '总量',
+				            data:T7
+				        },
+				        {
+				            name:'T8',
+				            type:'line',
+				            stack: '总量',
+				            data:T8
+				        },
+				        {
+				            name:'Pz',
+				            type:'line',
+				            stack: '总量',
+				            data:Pz
+				        }
+				    ]
+				};
+				myChart.setOption(option);
+			}
+			
+			function get_float(strs, arr){
+				
+				for(var i = 0; i < strs.length; i++){
+					
+					var num = parseFloat(strs[i]);
+					if (strs[i].length > 0){
+						arr.push(num);
+					}
+					
+				}
+				
+			}
+			function show_EEG(AF3, AF4, T7, T8, Pz){
+				
+    			$.post(server_url+'get_EEGs_data', 
+    				function(data, status){
+        				
+    					var data_arr = data.split('|');
+    					var timestamp = parseInt(data_arr[0]);
+    					
+    					var AF3_strs = data_arr[1].split(' ');
+						var AF4_strs = data_arr[2].split(' ');
+						var T7_strs = data_arr[3].split(' ');
+						var T8_strs = data_arr[4].split(' ');
+						var Pz_strs = data_arr[5].split(' ');
+						get_float(AF3_strs, AF3);
+						get_float(AF4_strs, AF4);
+						get_float(T7_strs, T7);
+						get_float(T8_strs, T8);
+						get_float(Pz_strs, Pz);
+						
+						var sec = 10;
+						if (timestamp >= sec){
+							var data_len = AF3.length/(sec+1);
+							
+							for(var i = 0; i < data_len; i++){
+								AF3.shift();
+								AF4.shift();
+								T7.shift();
+								T8.shift();
+								Pz.shift();
+							}
+						}
+						
+						set_EEG_chart(AF3, AF4, T7, T8, Pz);
+						
+						
+    				});
+    				
+			}
+			
+			function set_emotion_wheel_chart(emotion_distcretes){
+				var data_len = emotion_distcretes.length;
+				var myChart = echarts.init(document.getElementById('emotion_wheel'), 'dark');
+				var max_ele = 4;
+				option = {
+				    title: {
+				        text: 'Emotion wheel',
+				        top: 0,
+				        left: 0
+				    },
+				    tooltip: {
+				        trigger: 'item',
+				        backgroundColor : 'rgba(0,0,250,0.2)'
+				    }, 
+				
+				    visualMap: {
+				        top: 'middle',
+				        min:0,
+				        max:4,
+				        range:[0, 4],
+				        right: 10,
+				        color: ['red', 'yellow'],
+				        
+				        calculable: true
+				    },
+				    radar: {
+				       indicator : [
+				           { text: 'Pride', max: max_ele},
+				           { text: 'Elation', max: max_ele},
+				           { text: 'Joy', max: max_ele},
+				           { text: 'Satisfaction', max: max_ele},
+				           { text: 'Reief', max: max_ele},
+				           { text: 'Hope', max: max_ele},
+				           { text: 'Interet', max: max_ele},
+				           { text: 'Surprise', max: max_ele},
+				           { text: 'Sadness', max: max_ele},
+				           { text: 'Fear', max: max_ele},
+				           { text: 'Shame', max: max_ele},
+				           { text: 'Guilt', max: max_ele},
+				           { text: 'Envy', max: max_ele},
+				           { text: 'Disgust', max: max_ele},
+				           { text: 'Contempt', max: max_ele},
+				           { text: 'Anger', max: max_ele}
+				          
+				        ]
+				    },
+				    series : (function (){
+				        var series = [];
+				        for (var i = 1; i <= data_len; i++) {
+				            series.push({
+				                name:'浏览器（数据纯属虚构）',
+				                type: 'radar',
+				                symbol: 'none',
+				                lineStyle: {
+				                    width: 1
+				                },
+				                emphasis: {
+				                    areaStyle: {
+				                        color: 'rgba(0,250,0,0.3)'
+				                    }
+				                },
+				                data:[
+				                  {
+				                    value:emotion_distcretes[i],
+				                    name: i
+				                  }
+				                ]
+				            });
+				        }
+				        return series;
+				    })()
+				};
+				myChart.setOption(option);
+			}
+			
+			function set_dimensional_emotion_chart(valences, arousals){
+				var myChart = echarts.init(document.getElementById('dimensional_emotion'), 'dark');
+				option = {
+					title: {
+				        text: 'Dimensional Emotion'
+				    },
+					 legend: {
+				        data:['Valence', 'Arousal']
+				    },
+				        grid: {
+				        left: '3%',
+				        right: '0%',
+				        bottom: '1%',
+				        containLabel: true
+				    },
+				    xAxis: {
+				        type: 'category',
+				       	min: 0,
+				        max: 10
+				    },
+				    yAxis: {
+				        type: 'value',
+				        min: 0,
+				        max: 9
+				    },
+				    series: [
+				    {
+				        data: valences,
+				        name: 'Valence',
+				        type: 'line',
+				        smooth: true
+				    },
+				    {
+				    	data: arousals,
+				    	name: 'Arousal',
+				    	type: 'line',
+				    	smooth: true
+				    }]
+				};
+				
+				
+				myChart.setOption(option);
+				
+			}
+			function show_emotion(valences, arousals, emotion_distcretes, emotion_strengths){
+				$.post(server_url+'get_emotion_data', 
+    				function(data, status){
+        				
+    					var data_arr = data.split('|');
+    					var timestamp = parseInt(data_arr[0]);
+    					
+    					var valence = parseFloat(data_arr[1]);
+						var arousal = parseFloat(data_arr[2]);
+						var emotion_distcrete_str = data_arr[3].split(' ');
+						var emotion_strength = parseFloat(data_arr[4]);
+						
+						var emotion_distcrete = [];
+						get_float(emotion_distcrete_str, emotion_distcrete);
+						for (var i = 0; i < emotion_distcrete.length; i++){
+							emotion_distcrete[i] = emotion_distcrete[i]*emotion_strength;
+						}
+						
+						valences.push(valence);
+						arousals.push(arousal);
+						emotion_distcretes.push(emotion_distcrete);
+						emotion_strengths.push(emotion_strength);
+						
+						var sec = 10;
+						if (timestamp > sec){
+							valences.shift();
+							arousals.shift();
+							emotion_distcretes.shift();
+							emotion_strengths.shift();
+						}
+						
+						set_emotion_wheel_chart(emotion_distcretes);
+						set_dimensional_emotion_chart(valences, arousals);
+						
+    				});	
+			}
+			
+			$(document).ready(function(){
+				
+				$('#dimensional_emotion').hide();
+ 				reset_div_height();
+ 				window.onresize = function() {
+			    	reset_div_height();    	  
+			    }
+   				var emotion_wheel_width = $('#emotion_wheel').width();
+ 				$('#dimensional_emotion').width(emotion_wheel_width);
+ 				var emotion_wheel_height = $('#emotion_wheel').height();
+ 				$('#dimensional_emotion').height(emotion_wheel_height);
+				
+			    window.setInterval(function(){
+			    	show_video();
+			    }, 250);
+			    
+			    
+			    var AF3 = [];
+				var AF4 = [];
+				var T7 = [];
+				var T8 = [];
+				var Pz = [];
+				
+			    window.setInterval(function(){
+			    	show_EEG(AF3, AF4, T7, T8, Pz);
+			    }, 1000);
+			    
+			    var valences = [];
+			    var arousals = [];
+			    var emotion_distcretes = [];
+			    var emotion_strengths = [];
+			    
+			    window.setInterval(function(){
+			    	show_emotion(valences, arousals, emotion_distcretes, emotion_strengths);
+			    }, 1000);
+			    
+			    $('#switch_btn').click(function(){
+			    	
+			    	if($("#dimensional_emotion").is(":hidden")){
+			    		$("#emotion_wheel").hide();
+			    		$('#dimensional_emotion').show();
+				    	$('#switch_btn').css("background",'white');
+				    	$('#switch_image').attr('src', "static/img/switch_black.png");
+			  			return;
+			    	}
+			    	if($("#emotion_wheel").is(":hidden")){
+			    		$("#dimensional_emotion").hide();
+			    		$('#emotion_wheel').show();
+			    		$('#switch_btn').css("background",'rgb(49,176,231)');
+				    	$('#switch_image').attr('src', "static/img/switch_white.png");
+			    	}
+			    });
+			    
+			    
+			
+			});
+		</script>
+		
+		<style>
+			#video {
+				
+				/*border-style: solid;
+				border-color: red;
+				border-width: 1px;*/
+				float: left;
+				background-color:rgb(51,51,51);
+			}
+			
+			#results {
+				
+				width: 60%;
+				float: right;
+				/*border-style: solid;
+				border-color: green;
+				border-width: 1px;	*/
+			}
+			
+			#emotion_wheel {
+				width: 90%;
+				height: 100%;
+				float: right;	
+				
+				/*border-style: solid;
+				border-color: blue;
+				border-width: 1px;*/
+			}
+			
+			#dimensional_emotion {
+				width: 80%;
+				height: 100%;
+				float: right;		
+				
+				/*border-width: 1px;				
+				border-style: solid;
+				border-color: white;*/
+			} 
+			#switch_plane {
+				height: 100%;
+				float: left;		
+			}
+			
+			#EEG {
+				
+				width: 100%;
+				border-style: solid;
+				border-color: white;
+				border-width: 2px;
+				float: left;
+				margin-top: 5px;
+				background-color:rgb(51,51,51);
+			}
+			
+			.btn-circle {
+			  width: 30px;
+			  height: 30px;
+			  text-align: center;
+			  padding: 6px 0;
+			  font-size: 12px;
+			  line-height: 1.428571429;
+			  border-radius: 15px;
+			}
+			.btn-circle.btn-lg {
+			  width: 50px;
+			  height: 50px;
+			  padding: 10px 16px;
+			  font-size: 18px;
+			  line-height: 1.33;
+			  border-radius: 25px;
+			}
+			.btn-circle.btn-xl {
+			  width: 70px;
+			  height: 70px;
+			  padding: 10px 16px;
+			  font-size: 24px;
+			  line-height: 1.33;
+			  border-radius: 35px;
+			}
+			
+		</style>
+	</head>
+	<body style="background-color: rgb(51,51,51);">
+		<div id = 'video' onclick='click_video()'>
+			 <img id = 'video_img' src=''/>
+		</div>
+		<script>
+			function click_video(){
+				window.location.href = 'video';
+			}
+		</script>
+		<div id = 'results'>
+			<div id = 'switch_plane'>
+				
+				<div id = 'switch_div' style="border-radius:50%;">
+						
+					<button id = 'switch_btn' type ='button' class='btn btn-info btn-circle btn-lg' >
+						
+						<img id = 'switch_image' src="static/img/switch_white.png"/>
+					
+					</button>
+				</div>
+				
+				
+			</div>
+			<div id = 'emotion_wheel'></div>
+			<div id = 'dimensional_emotion'></div>
+		</div>
+		
+		<div id = 'EEG' onclick="click_EEG()"></div>
+		<script>
+			function click_EEG(){
+				window.location.href = 'EEG';
+			}
+		</script>
+	</body>
+</html>

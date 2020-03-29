@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Face</title>
+<!--		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>-->
+		<script src="../static/js/video/jquery.min.js"></script>
+<!--		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-json/2.6.0/jquery.json.min.js"></script>-->
+		<script src="../static/js/video/jquery.json.min.js"></script>
+		<script type="text/javascript" src="../static/js/echarts.min.js" ></script>
+		<script type="text/javascript" src="../static/js/configuration.js" ></script>
+<!--		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
+		<link rel="stylesheet" href="../static/css/video/bootstrap.min.css"
+			  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+			  crossorigin="anonymous">
+		
+	</head>
+	<script>
+		function reset_div_size(){
+			var screen_heigth = $(window).height();
+			
+   			var camera_height = screen_heigth/2.1;
+   			$('#camera').height(camera_height);
+   			
+   			var features_height = screen_heigth/1.01;
+   			$('#features').height(features_height);
+ 			
+ 			var select_map_height = screen_heigth/3;
+ 			$('#select_map').height(select_map_height);
+ 				
+ 		}
+		
+		function onWindowResize() {
+			reset_div_size();
+	    }
+		
+		
+		function add_kernel_div(layer_name, file_names){
+			
+			for (var i = 0; i < 30 ; i++){
+				var childdiv=$('#' + layer_name + '_' + i);
+				childdiv.empty();
+				var image_id = layer_name + '_' + i + 'image';
+				childdiv.prepend('<img id = "' + image_id + '" src="'+file_names[i]+'" />');
+				
+				$('#' + image_id).click(function(){
+					$('#show_select_kernel').empty();
+					var image_id = layer_name + '_' + i + 'image';
+					
+					$('#show_select_kernel').prepend('<img src="' + this.src + '" style = "width:300px; height:300px"/>')
+
+				});
+			}	
+		}
+		
+		var cnt = 0;
+		function show_features(){
+			$.post(server_url+'get_face_features', 
+    			function(data, status){
+    				
+    				var img_names = data.split('|');	
+					$('#camera_image').attr('src', img_names[0]);
+					$('#camera_image').height($('#camera').height());
+					if (cnt % 5 == 0){
+						add_kernel_div('first_layer', img_names.slice(1, 31));
+						
+						add_kernel_div('second_layer', img_names.slice(31, 61));
+						
+						add_kernel_div('third_layer', img_names.slice(61, 91));
+							
+					}
+					cnt++;
+					
+						
+    			});
+				
+    				
+		}
+		
+		function create_div(layer_name){
+			parentdiv = $('#' + layer_name);
+//			parentdiv.empty();
+			for (var i = 0; i < 30 ; i++){
+				var childdiv=$('<div></div>');
+				childdiv.attr('id',layer_name + '_' + i);
+//				childdiv.prepend('<img src="'+file_names[i]+'" />');
+				childdiv.addClass('childdiv');  
+				
+//				childdiv.click(function(){
+//					$('#show_select_kernel').empty();
+//					var image_id = layer_name + '_' + i + 'image';
+//					alert($('#' + image_id)[0].src);
+////					$('#show_select_kernel').prepend('<img src="' + childdiv.children("img")[0].src + '" style = "width:300px; height:300px"/>')
+//					$('#show_select_kernel').prepend('<img src="' + $('#' + image_id)[0].src + '" style = ""/>');
+//
+//				});
+				parentdiv.prepend(childdiv);
+			}	
+		}
+		
+		$(document).ready(function(){
+			reset_div_size();
+			window.onresize = onWindowResize;
+//			add_kernel_div();
+			
+			create_div('first_layer');
+			create_div('second_layer');
+			create_div('third_layer');
+			setInterval(show_features, 500);
+		});
+		
+		
+		
+	</script>
+	
+	<style>
+		#camera {
+			width: 35%;
+			border: solid white 1px;
+			float: left;
+		}
+		
+		#features {
+			width: 60%;
+			border: solid red 1px;
+			float: right;
+		}
+		
+		#select_map {
+			width: 35%;
+			/*border: solid red 1px;*/
+			float: left;
+			margin-top: 5%;
+		}
+		
+		.childdiv {
+			border: solid red 1px;
+			float: left;
+			margin: 3% 1% 1% 2.3%;
+			height: 48px;
+			width: 48px;
+		}
+	</style>
+	
+	<body style="background: rgb(51, 51, 51);">
+		<div id = 'camera'>
+			<img id = 'camera_image' />
+		</div>
+		
+		<div id = 'features'>
+			<div style="width: 100%; border: solid white 1px; height: 30%; ">
+				<div style="font-weight: bold; color: #00BFFF; margin-top: 10%; font-size: 20px; float: left; height: 30%;">
+					First convolutional layer
+				</div>
+				<div id = 'first_layer' style="">
+					
+				</div>
+			</div>
+			
+			<div style="width: 100%; border: solid white 1px; height: 30%;">
+				<div style="font-weight: bold; color: #00BFFF; margin-top: 10%; font-size: 18px; float: left; height: 30%;">
+					Second convolutional layer
+				</div>
+				<div id = 'second_layer' style="">
+					
+				</div>
+			</div>
+			
+			<div style="width: 100%; border: solid white 1px; height: 30%;">
+				<div style="font-weight: bold; color: #00BFFF; margin-top: 10%; font-size: 20px; float: left; height: 30%;">
+					Third convolutional layer
+				</div>
+				<div id = 'third_layer' style="">
+					
+				</div>
+			</div>
+		</div>
+		
+		<div id = 'select_map'>
+			<div style="color: #00BFFF; margin-left:10%; margin-top: 22%; font-size: 20px; font-weight: bold; float: left;">
+				Select kernel 
+			</div>
+			<div id = 'show_select_kernel' style="width: 300px; height: 300px; border: solid white 1px; float: right; margin-right: 5%;">
+				
+				
+			</div>
+			
+			
+		</div>
+	</body>
+</html>

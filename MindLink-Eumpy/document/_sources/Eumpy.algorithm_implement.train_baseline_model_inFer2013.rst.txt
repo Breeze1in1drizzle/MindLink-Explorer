@@ -1,0 +1,38 @@
+Eumpy.algorithm\_implement.train\_baseline\_model\_inFer2013 package
+====================================================================
+
+Submodules
+----------
+
+Eumpy.algorithm\_implement.train\_baseline\_model\_inFer2013.build\_model module
+--------------------------------------------------------------------------------
+
+.. automodule:: Eumpy.algorithm_implement.train_baseline_model_inFer2013.build_model
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Eumpy.algorithm\_implement.train\_baseline\_model\_inFer2013.prepare\_data module
+---------------------------------------------------------------------------------
+
+.. automodule:: Eumpy.algorithm_implement.train_baseline_model_inFer2013.prepare_data
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Eumpy.algorithm\_implement.train\_baseline\_model\_inFer2013.train module
+-------------------------------------------------------------------------
+
+.. automodule:: Eumpy.algorithm_implement.train_baseline_model_inFer2013.train
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: Eumpy.algorithm_implement.train_baseline_model_inFer2013
+    :members:
+    :undoc-members:
+    :show-inheritance:

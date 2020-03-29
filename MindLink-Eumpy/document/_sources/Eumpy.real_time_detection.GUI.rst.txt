@@ -1,0 +1,54 @@
+Eumpy.real\_time\_detection.GUI package
+=======================================
+
+Submodules
+----------
+
+Eumpy.real\_time\_detection.GUI.EmotivDeviceReader module
+---------------------------------------------------------
+
+.. automodule:: Eumpy.real_time_detection.GUI.EmotivDeviceReader
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Eumpy.real\_time\_detection.GUI.FaceFeatureReader module
+--------------------------------------------------------
+
+.. automodule:: Eumpy.real_time_detection.GUI.FaceFeatureReader
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Eumpy.real\_time\_detection.GUI.bind module
+-------------------------------------------
+
+.. automodule:: Eumpy.real_time_detection.GUI.bind
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Eumpy.real\_time\_detection.GUI.start\_GUI module
+-------------------------------------------------
+
+.. automodule:: Eumpy.real_time_detection.GUI.start_GUI
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Eumpy.real\_time\_detection.GUI.tool module
+-------------------------------------------
+
+.. automodule:: Eumpy.real_time_detection.GUI.tool
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: Eumpy.real_time_detection.GUI
+    :members:
+    :undoc-members:
+    :show-inheritance:

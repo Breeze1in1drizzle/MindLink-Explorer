@@ -1,0 +1,45 @@
+Eumpy.data\_collection\_framework package
+=========================================
+
+Subpackages
+-----------
+
+.. toctree::
+
+    Eumpy.data_collection_framework.util
+
+Submodules
+----------
+
+Eumpy.data\_collection\_framework.bind module
+---------------------------------------------
+
+.. automodule:: Eumpy.data_collection_framework.bind
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Eumpy.data\_collection\_framework.data\_collection module
+---------------------------------------------------------
+
+.. automodule:: Eumpy.data_collection_framework.data_collection
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Eumpy.data\_collection\_framework.start\_GUI module
+---------------------------------------------------
+
+.. automodule:: Eumpy.data_collection_framework.start_GUI
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: Eumpy.data_collection_framework
+    :members:
+    :undoc-members:
+    :show-inheritance:

@@ -1,0 +1,32 @@
+Eumpy package
+=============
+
+Subpackages
+-----------
+
+.. toctree::
+
+    Eumpy.algorithm_implement
+    Eumpy.data_collection_framework
+    Eumpy.example
+    Eumpy.real_time_detection
+
+Submodules
+----------
+
+Eumpy.configuration module
+--------------------------
+
+.. automodule:: Eumpy.configuration
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: Eumpy
+    :members:
+    :undoc-members:
+    :show-inheritance:

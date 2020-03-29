@@ -1,0 +1,355 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Eumpy.real_time_detection.fusion package &mdash; Eumpy  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Eumpy
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Eumpy.real_time_detection.fusion package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-Eumpy.real_time_detection.fusion.enum_model">Eumpy.real_time_detection.fusion.enum_model module</a></li>
+<li><a class="reference internal" href="#module-Eumpy.real_time_detection.fusion">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Eumpy</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Eumpy.real_time_detection.fusion package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/Eumpy.real_time_detection.fusion.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="eumpy-real-time-detection-fusion-package">
+<h1>Eumpy.real_time_detection.fusion package<a class="headerlink" href="#eumpy-real-time-detection-fusion-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-Eumpy.real_time_detection.fusion.enum_model">
+<span id="eumpy-real-time-detection-fusion-enum-model-module"></span><h2>Eumpy.real_time_detection.fusion.enum_model module<a class="headerlink" href="#module-Eumpy.real_time_detection.fusion.enum_model" title="Permalink to this headline">¶</a></h2>
+<p>Created on Thu Oct 25 18:52:26 2018</p>
+<p>&#64;author: Yongrui Huang</p>
+<dl class="class">
+<dt id="Eumpy.real_time_detection.fusion.enum_model.EnumModel">
+<em class="property">class </em><code class="descclassname">Eumpy.real_time_detection.fusion.enum_model.</code><code class="descname">EnumModel</code><a class="headerlink" href="#Eumpy.real_time_detection.fusion.enum_model.EnumModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<blockquote>
+<div>This class is used to apply CNN model to predict the valence and</div></blockquote>
+<p>arousal. The emotion state value (valence or arousal) ranges from 1 to
+9. We consider it as a continuous value and treat this preblem as a 
+regression problem.</p>
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd><p class="first">train_faces: save all faces for training
+shape: (number of trial, number of sample, 48, 48)</p>
+<p>train_EEGs: save all EEGs for training
+shape: (number of trial, number of sample, 10, 85)</p>
+<p>train_valence: save the ground truth of valence</p>
+<p>train_arousal: save the ground truth of arousal</p>
+<p>face_model: the implemented model for faces,
+input shape: (the number of sample, 48, 48, 1)
+output shape: (the number of sample, 1, 1)</p>
+<p>EEG_model: the implemented model for EEGs
+input shape: (the number of sample, 10, 85)
+output shape: (the number of sample, 1, 1)</p>
+<p>test_faces: save all faces for testing
+shape: (number of trial, number of sample, 48, 48)</p>
+<p>test_EEGs: save all EEGs for testing
+shape: (number of trial, number of sample, 10, 85)</p>
+<p>test_valence: save the ground truth of valence in test</p>
+<p>test_arousal: save the ground truth of arousal in test</p>
+<p>valence_weight: the weight for valence</p>
+<p>arousal_weight: the weight for arousal</p>
+<p class="last"><a href="#id1"><span class="problematic" id="id2">cache_</span></a>……: this kind of attribute are used for quicker 
+calculateing. Because the output of the face and EEG model are the
+same everytime, actually.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="Eumpy.real_time_detection.fusion.enum_model.EnumModel.add_test_data">
+<code class="descname">add_test_data</code><span class="sig-paren">(</span><em>trial_path</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.fusion.enum_model.EnumModel.add_test_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>add one trial data into model for testing</p>
+<p>Arguments:</p>
+<blockquote>
+<div>trial_path: the trial path of the data</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="Eumpy.real_time_detection.fusion.enum_model.EnumModel.add_train_data">
+<code class="descname">add_train_data</code><span class="sig-paren">(</span><em>trial_path</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.fusion.enum_model.EnumModel.add_train_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>add one trial data into model for training</p>
+<p>Arguments:</p>
+<blockquote>
+<div>trial_path: the trial path of the data</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="Eumpy.real_time_detection.fusion.enum_model.EnumModel.cal_RMSE">
+<code class="descname">cal_RMSE</code><span class="sig-paren">(</span><em>predict_valences</em>, <em>predict_arousals</em>, <em>valences</em>, <em>arousals</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.fusion.enum_model.EnumModel.cal_RMSE" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate the RSME</p>
+<p>Arguments:</p>
+<blockquote>
+<div><p>predict_valences: the valences are predicted</p>
+<p>predict_arousals: the arousals are predicted</p>
+<p>valences: the ground truth valences</p>
+<p>arousals: the ground truth arousals</p>
+</div></blockquote>
+<p>Returns:</p>
+<blockquote>
+<div><p>valence_RMSE: the root mean squared error of valence</p>
+<p>arousal_RMSE: the root mean squared error of arousal</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="Eumpy.real_time_detection.fusion.enum_model.EnumModel.evalute">
+<code class="descname">evalute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.fusion.enum_model.EnumModel.evalute" title="Permalink to this definition">¶</a></dt>
+<dd><p>evalute the performance</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Eumpy.real_time_detection.fusion.enum_model.EnumModel.predict">
+<code class="descname">predict</code><span class="sig-paren">(</span><em>faces</em>, <em>EEGs</em>, <em>testing=False</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.fusion.enum_model.EnumModel.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>predict the data using the trained model</p>
+<p>Arguments:</p>
+<blockquote>
+<div><p>faces: the faces data set for predicting.
+shape: (trial number, sample number, 48, 48)</p>
+<p>EEGs: the EEGs data set for predicting.
+shape: (trial number, sample number, 10, 85)</p>
+<p>testing: whether it is test mode</p>
+</div></blockquote>
+<p>Returns:</p>
+<blockquote>
+<div><p>enum_valences: the valence after fusion</p>
+<p>enum_arousals: the arousal after fusion</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="Eumpy.real_time_detection.fusion.enum_model.EnumModel.train">
+<code class="descname">train</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.fusion.enum_model.EnumModel.train" title="Permalink to this definition">¶</a></dt>
+<dd><p>train the model</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="Eumpy.real_time_detection.fusion.enum_model.format_EEG">
+<code class="descclassname">Eumpy.real_time_detection.fusion.enum_model.</code><code class="descname">format_EEG</code><span class="sig-paren">(</span><em>EEGs</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.fusion.enum_model.format_EEG" title="Permalink to this definition">¶</a></dt>
+<dd><p>conduct normalize for EEG data</p>
+<p>Arguments:</p>
+<blockquote>
+<div>EEGs: shape (?, number of feature)</div></blockquote>
+<p>Returns:</p>
+<blockquote>
+<div>EEGs: shape (?, number of feature), EEGs after formating</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="Eumpy.real_time_detection.fusion.enum_model.format_raw_images_data">
+<code class="descclassname">Eumpy.real_time_detection.fusion.enum_model.</code><code class="descname">format_raw_images_data</code><span class="sig-paren">(</span><em>imgs</em><span class="sig-paren">)</span><a class="headerlink" href="#Eumpy.real_time_detection.fusion.enum_model.format_raw_images_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>conduct normalize and shape the image data in order to feed it directly
+to keras model</p>
+<p>Arguments:</p>
+<blockquote>
+<div>imgs: shape(?, 48, 48), all pixels are range from 0 to 255</div></blockquote>
+<p>Return:</p>
+<blockquote>
+<div>shape(?, 48, 48, 1), image data after normalizing</div></blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="module-Eumpy.real_time_detection.fusion">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-Eumpy.real_time_detection.fusion" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Yongrui Huang
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
