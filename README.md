@@ -6,6 +6,9 @@ To inspire the market potential of MindLink, we will not noly update this reposi
 
 There are five students of school of software of South China Nromal University(SCNU) in MindLink-Exploring team: Ruixin Lee, Caizhen He, Zhaoxin Cai, Wenxin Huang and Xiaojian Liu.
 
+The paper titled "MindLink-Eumpy: An Open-source Python Toolbox for Multimodal Emotion Recognition" is published.
+Please check this paper via https://www.frontiersin.org/articles/10.3389/fnhum.2021.621493/full
+
 Hopefully we can finish this project to make emotions cauculating much easier.
 
 Welcome to join us to explore the MindLink! Thank you.
