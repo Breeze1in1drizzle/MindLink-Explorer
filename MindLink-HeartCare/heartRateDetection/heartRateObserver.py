@@ -11,6 +11,10 @@ import dlib
 import time
 from scipy import signal
 
+import Queue
+
+import EVM_V1 as EVM
+
 # from cv2 import pyrUp, pyrDown
 
 
@@ -30,6 +34,8 @@ class heartRateObserver(object):
 
         self.MIN_HZ = 0.83  # 50 BPM - minimum allowed heart rate
         self.MAX_HZ = 3.33  # 200 BPM - maximum allowed heart rate
+
+        self.frame_queue = Queue.Queue(maxsize=10)      # 定义一个全局队列，进行数据控制
 
         '''
         Minimum number of frames required before heart rate is computed.
@@ -369,6 +375,40 @@ class heartRateObserver(object):
         graph_width = 0
         bpm_display_width = 0
 
+        # 这里应该做一个控制：先读取一个时间序列上的frames，并用来进行了欧拉放大后，再进行心率计算
+        # 具体步骤如下：
+        # 首先，设置一个while循环，不断读取数据，并保证数据量不高于BufferMax，也就是__init__函数中自定义的缓存最大数量
+        # 这个Buffer相当于一个缓存队列，不断地读取（入队），同时在数量超出本身后删除最前面的数据（出队）
+        # 设置一个线程来进行上述的while循环，并设置一个全局的队列来控制
+        #
+        # 这里是要设置一个线程进行队列的读取
+        # while cv2.getWindowProperty(window_title, 0) == 0:
+        #     ret_val, frame = webcam.read()
+        #     if not ret_val:
+        #         print("ERROR: Unable to read from webcam. Exiting.")
+        #         self.shut_down(webcam)
+        #     self.frame_queue.put(frame)
+
+
+        ###
+        # 应该另外写一个类，然后在本文件的这个地方申请一个这个类的实例。
+        # 用这个类来进行数据读取，同时这个类提供一个数据返回的接口，供本文件的类的函数使用。
+        # 这个类可以写在EVM里面，因为要进行了欧拉放大处理之后，再将数据存入内存队列中
+        ###
+
+        ###
+        # 所以这么一想，应该分成三个类：
+        # 第一个：负责读取摄像头的视频，进行欧拉放大，然后再存入内存队列当中。这个类要控制队列的大小，保持数据量的稳定。（这个类甚至可以拆分成为两个类）
+        # 第二个：调用内存中已经欧拉放大了的图像，进行心率计算
+        # 第三个：window展示（实时可视化界面）
+        ###
+
+        ###
+        # 又或者可以这样子来分不同的类
+        # 第一个类：负责读取摄像头视频，构造并控制内存队列，开启不同的线程，同时负责GUI的展示
+        # 第二个类：算法类，包含EVM算法以及计算心率算法
+        ###
+
         # cv2.getWindowProperty() returns -1 when window is closed by user.
         while cv2.getWindowProperty(window_title, 0) == 0:
             ret_val, frame = webcam.read()
@@ -382,7 +422,9 @@ class heartRateObserver(object):
             Make copy of frame before we draw on it.  We'll display the copy in the GUI.
             The original frame will be used to compute heart rate.
             '''
+            print 'type of frame: ', type(frame), ', ', frame.shape
             view = np.array(frame)      # 将摄像头读取到的图像转为 np.array的格式
+            print 'type of view: ', type(view), ', ', view.shape
 
             # Heart rate graph gets 75% of window width. BPM gets 25%.
             # 计算window窗口大小？？

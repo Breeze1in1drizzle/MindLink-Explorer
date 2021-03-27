@@ -4,6 +4,10 @@
 '''
 @author: Ruixin Lee
 @date: Mar 27 2021
+
+参考博客及Github：
+https://blog.csdn.net/tinyzhao/article/details/52681250
+https://github.com/flyingzhao/PyEVM
 '''
 
 
@@ -103,12 +107,12 @@ class EVM_tools(object):
         x = 0
         while cap.isOpened():
             ret, frame = cap.read()
-            if ret is True:
-                video_tensor[x] = frame
+            if ret is True:     # 如果有获取到图像
+                video_tensor[x] = frame     # 则video_tensor这个nparray类增加一个图像
                 x += 1
             else:
                 break
-        return video_tensor, fps
+        return video_tensor, fps    # fps: frames per second
 
     # apply temporal ideal bandpass filter to gaussian video
     def temporal_ideal_filter(self, tensor, low, high, fps, axis=0):
@@ -260,12 +264,14 @@ class EVM_tools(object):
         :param amplification:
         :return:
         '''
-        t, f = self.load_video(video_name)
+        t, f = self.load_video(video_name)      # t表示tensor_video，即一堆图片
+        print 'shape of t(tensor_video): ', t.shape
         gau_video = self.gaussian_video(t, levels=levels)
         filtered_tensor = self.temporal_ideal_filter(gau_video, low, high, f)
         amplified_video = self.amplify_video(filtered_tensor,
                                              amplification=amplification)
         final = self.reconstruct_video(amplified_video, t, levels=3)
+        print 'type of final video: ', type(final), '\n', final.shape
         self.save_video(final)
 
     # magnify motion
