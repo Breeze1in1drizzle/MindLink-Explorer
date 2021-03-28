@@ -17,6 +17,11 @@ import heartRate_comp as HRC
 
 # from cv2 import pyrUp, pyrDown
 
+webcam_G = cv2.VideoCapture(0)  # webcam Global
+if webcam_G.isOpened()==False:
+    print 'webcam Global is False.'
+    exit(0)
+
 
 def run(heartRateObserver=None):
     '''
@@ -38,25 +43,23 @@ def run(heartRateObserver=None):
               'Download it from http://sourceforge.net/projects/dclib/files/dlib/v18.10/shape_predictor_68_face_landmarks.dat.bz2')
         return
 
-    webcam = cv2.VideoCapture(0)  # 打开摄像头，webcam可以逐帧读取图像
+    heartRateObserver.webcam = cv2.VideoCapture(0)  # 打开摄像头，webcam可以逐帧读取图像
 
-    if not webcam.isOpened():
+    if not heartRateObserver.webcam.isOpened():
         print 'ERROR: Unable to open webcam. Verify that webcam is connected and try again. Exiting.'
-        webcam.release()
+        heartRateObserver.webcam.release()
         return
 
     cv2.namedWindow(heartRateObserver.WINDOW_TITLE)
 
-    heartRateObserver.start()   # 开始采集数据
-    print 'subprocess starts'
-    time.sleep(5)
+    heartRateObserver.start(webcam=heartRateObserver.webcam)   # 开始采集数据
 
     heartRateObserver.run_pulse_observer(detector=detector, predictor=predictor,
-                            webcam=webcam, window_title=heartRateObserver.WINDOW_TITLE)
+                            webcam=heartRateObserver.webcam, window_title=heartRateObserver.WINDOW_TITLE)
 
     # run_pulse_observer() returns when the user has closed the window.  Time to shut down.
-    heartRateObserver.shut_down(webcam)
-    if webcam.isOpened():
+    heartRateObserver.shut_down(heartRateObserver.webcam)
+    if heartRateObserver.webcam.isOpened():
         print 'failed to shut down webcam!'
 
 
@@ -73,13 +76,10 @@ class heartRateExperiments(object):
         # Constants
         self.WINDOW_TITLE = 'MindLink-HeartCare'
         self.BUFFER_MAX_SIZE = 500  # Number of recent ROI average values to store
-
         # Number of recent ROI average values to show in the pulse graph
         self.MAX_VALUES_TO_GRAPH = 50
-
         self.MIN_HZ = 0.83  # 50 BPM - minimum allowed heart rate
         self.MAX_HZ = 3.33  # 200 BPM - maximum allowed heart rate
-
         self.raw_data_queue = Queue(maxsize=-1)      # 定义一个全局队列，进行数据控制
 
         # 这个类里面有一个线程，启动后一直维持着数据采集，视频读取，存到队列里面
@@ -90,17 +90,40 @@ class heartRateExperiments(object):
         more accurate.
         '''
         self.MIN_FRAMES = 100
-
         self.DEBUG_MODE = False
+
         self.hrc = heartRateComp
         self.hrc.set_parameters(MIN_HZ=self.MIN_HZ, MAX_HZ=self.MAX_HZ, DEBUG_MODE=self.DEBUG_MODE)
 
-        self.webcam = None
-        self.window_title = None
+        self.window_title = 'MindLink-HeartCare'
         self.num_start = 0
+        self.detector = dlib.get_frontal_face_detector()
+        # Predictor pre-trained model can be downloaded from:
+        # http://sourceforge.net/projects/dclib/files/dlib/v18.10/shape_predictor_68_face_landmarks.dat.bz2
+        try:
+            # predict roi??? （68个关键点模型地址）返回值：人脸关键点预测器
+            # 参考博客：https://blog.csdn.net/weixin_44493841/article/details/93503934
+            self.predictor = dlib.shape_predictor('shape_predictor_68_face_landmarks.dat')
+        except RuntimeError as e:
+            print('ERROR:  \'shape_predictor_68_face_landmarks.dat\' was not found in current directory.   ' \
+                'Download it from http://sourceforge.net/projects/dclib/files/dlib/v18.10/shape_predictor_68_face_landmarks.dat.bz2')
+            return
+        self.webcam = cv2.VideoCapture(0)  # 打开摄像头，webcam可以逐帧读取图像
+        print '__init__, type of self.webcam: ', type(self.webcam)
+        if not self.webcam.isOpened():
+            print 'ERROR: Unable to open webcam. Verify that webcam is connected and try again. Exiting.'
+            self.webcam.release()
+            return
+        cv2.namedWindow(self.WINDOW_TITLE)
+        self.start()   # 开始采集数据
+        self.run_pulse_observer()
+        # run_pulse_observer() returns when the user has closed the window.  Time to shut down.
+        self.shut_down(self.webcam)
+        if self.webcam.isOpened():
+            print 'failed to shut down webcam!'
+            ######################################################################
         ######################################################################
-    ######################################################################
-    ######################################################################
+        ######################################################################
 
     def get_max_abs(self, lst):
         '''
@@ -212,18 +235,23 @@ class heartRateExperiments(object):
 
     def read_img_from_camera(self):
         print 'sub process started!!!'
-        while cv2.getWindowProperty(self.window_title, 0) == 0:
+        # flag = cv2.getWindowProperty(self.window_title, 0)
+        # print 'flag: ', flag
+        while (1):
             if self.raw_data_queue.qsize() >= self.BUFFER_MAX_SIZE:     # 队列满了
+                print 'continue'
                 continue    # 不读取数据
             else:
-                ret_val, frame = self.webcam.read()
+                print 'else::::'
+                ret_val, frame = webcam_G.read()
                 # ret_val == False if unable to read from webcam
+                print 'read_img_from_camera: ', type(frame)
                 if not ret_val:
                     print("ERROR: Unable to read from webcam. Exiting.")
                     self.shut_down(self.webcam)
                 self.raw_data_queue.put(frame)      # 将原始的图片装载入队列里面
 
-    def run_pulse_observer(self, detector, predictor, webcam, window_title):
+    def run_pulse_observer(self):
         '''
         Main function.
         :param detector: detects human face, returns a combination of (X_left, Y_top) and (X_right, Y_bottom)
@@ -232,8 +260,7 @@ class heartRateExperiments(object):
         :param window_title: name of window
         :return:
         '''
-        self.webcam = webcam
-        self.window_title = window_title
+        self.window_title = self.window_title
         roi_avg_values = []
         graph_values = []
         times = []
@@ -281,7 +308,9 @@ class heartRateExperiments(object):
 
         # 这个循环不断读取上述内存的数据，提取roi区域并计算心率
         # cv2.getWindowProperty() returns -1 when window is closed by user.
-        while cv2.getWindowProperty(window_title, 0) == 0:
+        flag = cv2.getWindowProperty(self.window_title, 0)
+        print 'flag: ', flag
+        while cv2.getWindowProperty(self.window_title, 0) == 0:
         # while self.raw_data_queue.qsize() > 0:
             print 'in while'
             frame = self.raw_data_queue.get()       # 读取队列的数据
@@ -315,14 +344,14 @@ class heartRateExperiments(object):
                 bpm_display_width = view.shape[1] - graph_width
 
             # Detect face using dlib
-            faces = detector(frame, 0)      # 得到关键点坐标（左上角和右下角）
+            faces = self.detector(frame, 0)      # 得到关键点坐标（左上角和右下角）
             # print("faces type: ", type(faces))
             # test_faces = np.array(faces[0])
             # print("faces size: ", len(test_faces))
             # print("test_faces type: ", type(test_faces))
             # print(test_faces)
             if len(faces) == 1:     # faces表示人脸的矩阵方框的范围，只允许一个人脸
-                face_points = predictor(frame, faces[0])    # frame: 图像, faces[0]: 左上角和右下角的坐标，框定人脸位置
+                face_points = self.predictor(frame, faces[0])    # frame: 图像, faces[0]: 左上角和右下角的坐标，框定人脸位置
                 # 计算得到了一个avg数值（通过对绿色通道的平均数值计算而来）
                 ####################################################
                 # 如果要###########进行欧拉放大，可以考虑在这个位置附近进行
@@ -334,7 +363,8 @@ class heartRateExperiments(object):
                 # 这里要使用  一张  frame
                 #########################################
                 #########################################
-                roi_avg = self.hrc.get_roi_avg(frame=frame, view=view, face_points=face_points, draw_rect=True)
+                roi_avg = self.hrc.get_roi_avg(frame=frame, view=view,
+                                               face_points=face_points, draw_rect=True)
                 # 时间序列中（各个roi区域的绿色通道数值的均值）作为一个元素，这个队列有多个元素
                 roi_avg_values.append(roi_avg)
                 times.append(time.time())
@@ -392,7 +422,7 @@ class heartRateExperiments(object):
             graph = np.hstack((graph, bpm_display))
             view = np.vstack((view, graph))
 
-            cv2.imshow(window_title, view)
+            cv2.imshow(self.window_title, view)
 
             key = cv2.waitKey(1)
             # Exit if user presses the escape key
@@ -403,4 +433,4 @@ class heartRateExperiments(object):
 if __name__ == "__main__":
     HRC_ = HRC.heartRateComputation()
     HRE = heartRateExperiments(HRC_)
-    run(HRE)
+    # run(HRE)
