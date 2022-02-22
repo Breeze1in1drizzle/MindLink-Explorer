@@ -6,6 +6,14 @@
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="PyDocumentationSettings">
-    <option name="renderExternalDocumentation" value="true" />
+    <option name="format" value="PLAIN" />
+    <option name="myDocStringFormat" value="Plain" />
+  </component>
+  <component name="TemplatesService">
+    <option name="TEMPLATE_FOLDERS">
+      <list>
+        <option value="$MODULE_DIR$/MindLink-Eumpy/real_time_detection/GUI/templates" />
+      </list>
+    </option>
   </component>
 </module>

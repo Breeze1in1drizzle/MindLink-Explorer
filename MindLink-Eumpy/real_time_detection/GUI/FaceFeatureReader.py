@@ -11,7 +11,7 @@ import cv2
 import random
 import string
 import os
-from bokeh.themes import default    # In which cases should I use bokeh in Eumpy?   From Ruixin Lee
+# from bokeh.themes import default    # In which cases should I use bokeh in Eumpy?   From Ruixin Lee
 import queue
 
 

@@ -193,6 +193,9 @@ class LstmModelRegression():
 
         model.compile(optimizer='Adadelta', loss='mean_squared_error',
                   metrics=[], loss_weights=[1., 1.])
+
+        model.summary()
+
         return model
     
     def train(self):
@@ -416,6 +419,9 @@ if __name__ == '__main__':
 
     start = time.time()
     main()
+    model = LstmModelRegression()
+    # model.build_model(input_shape=100.0000)
+
     # leave_one_subject_out_validation()
     end = time.time()
     print("耗时：%.2f秒" % (end - start))
